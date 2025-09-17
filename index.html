@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; background-color: #f0f2f5; padding: 40px 0; }
+    .container { display: flex; gap: 20px; width: 90%; max-width: 1200px; }
+    .quiz-card { flex: 2; background: #fff; padding: 25px 30px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border-top: 6px solid #007bff; animation: fadeIn 0.5s ease-in-out; }
+    .sidebar { flex: 1; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-height: 90vh; overflow-y: auto; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .question { font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #333; white-space: pre-line; }
+    .option { display: flex; align-items: center; margin: 8px 0; background: #f9fafb; padding: 10px; border-radius: 6px; border: 1px solid #e5e7eb; cursor: pointer; transition: background 0.2s, border 0.2s; }
+    .option.correct { border: 2px solid #28a745; background-color: #d4edda; }
+    .option.wrong { border: 2px solid #dc3545; background-color: #f8d7da; }
+    .option:hover { background: #e9f2ff; }
+    .option input { margin-right: 12px; }
+    .correct-box { border: 2px solid #28a745; background-color: #d4edda; padding: 12px; border-radius: 6px; margin: 12px 0; color: #155724; font-weight: 500; }
+    .wrong-box { border: 2px solid #dc3545; background-color: #f8d7da; padding: 12px; border-radius: 6px; margin: 12px 0; color: #721c24; font-weight: 500; }
+    .submit-btn, .next-btn, .retry-btn, .prev-btn, .review-btn { margin-top: 20px; margin-right: 10px; padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; background-color: #007bff; color: white; font-size: 16px; font-weight: 500; transition: background 0.2s; }
+    .submit-btn:hover, .next-btn:hover, .retry-btn:hover, .prev-btn:hover, .review-btn:hover { background-color: #0056b3; }
+    .explanation { font-style: italic; color: #555; margin-top: 8px; white-space: pre-line; }
+    .sidebar h3 { margin-bottom: 10px; }
+    .question-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 8px; }
+    .question-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 2px solid #28a745; border-radius: 4px; cursor: pointer; font-weight: bold; background: white; color: #333; }
+    .question-btn.current { box-shadow: 0 0 0 3px rgba(0,123,255,0.5); }
+    .question-btn.correct { background: #28a745; color: #fff; border: none; }
+    .question-btn.wrong { background: #ffc107; color: #000; border: none; }
+    .question-btn.unanswered { background: #fff; border: 2px solid #28a745; color: #000; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="quiz-card">
+      <div id="quiz"></div>
+    </div>
+    <div class="sidebar">
+      <h3>Danh sách câu hỏi</h3>
+      <div id="questionGrid" class="question-grid"></div>
+    </div>
+  </div>
+
+  <script>
+    let questions = [];
+    let current = 0;
+    let score = 0;
+    let userAnswers = []; // stores { selectedIndices: [], isCorrect: bool, explanation }
+    let reviewMode = false;
+
+    function normalizeText(s) { return String(s || '').replace(/\s+/g, ' ').trim().toLowerCase(); }
+
+    function parseAnswerToIndices(answer, options) {
+      if (answer == null) return [];
+      const optsNorm = options.map(o => normalizeText(o));
+      if (Array.isArray(answer)) {
+        const res = [];
+        answer.forEach(a => {
+          const token = String(a).trim();
+          if (/^[A-Za-z]$/.test(token)) {
+            const idx = token.toUpperCase().charCodeAt(0) - 65;
+            if (idx >= 0 && idx < options.length) res.push(idx);
+          } else {
+            const n = normalizeText(token);
+            const found = optsNorm.findIndex(x => x === n || x.includes(n));
+            if (found !== -1) res.push(found);
+          }
+        });
+        return Array.from(new Set(res));
+      }
+      const aStr = String(answer).trim();
+      if (/^\d+$/.test(aStr)) {
+        const idx = parseInt(aStr, 10) - 1;
+        if (idx >= 0 && idx < options.length) return [idx];
+      }
+      const parts = aStr.split(/[;,]/).map(p => p.trim()).filter(Boolean);
+      if (parts.length === 1 && /^[A-Za-z]{2,}$/.test(parts[0])) {
+        const res = [];
+        for (const ch of parts[0]) {
+          const idx = ch.toUpperCase().charCodeAt(0) - 65;
+          if (idx >= 0 && idx < options.length) res.push(idx);
+        }
+        return Array.from(new Set(res));
+      }
+      const result = [];
+      for (const part of parts) {
+        const token = part.replace(/\./g,'').trim();
+        if (/^[A-Za-z]$/.test(token)) {
+          const idx = token.toUpperCase().charCodeAt(0) - 65;
+          if (idx >= 0 && idx < options.length) result.push(idx);
+        } else {
+          const n = normalizeText(token);
+          const found = optsNorm.findIndex(x => x === n || x.includes(n) || n.includes(x));
+          if (found !== -1) result.push(found);
+        }
+      }
+      return Array.from(new Set(result));
+    }
+
+    async function loadQuestions() {
+      try {
+        const resp = await fetch('questions.json');
+        const data = await resp.json();
+        questions = data.map(q => {
+          const opts = q.options || [];
+          const correctIndices = parseAnswerToIndices(q.answer, opts);
+          return {
+            ...q,
+            question: (q.question || '').replace(/\\\\n/g, '\\n').replace(/\/n/g, '\\n'),
+            explanation: q.explanation ? q.explanation.replace(/\\\\n/g, '\\n').replace(/\/n/g, '\\n') : '',
+            options: opts,
+            correctIndices
+          };
+        });
+        renderSidebar();
+        showQuestion();
+      } catch (err) {
+        console.error(err);
+        document.getElementById('quiz').innerHTML = '<p>Lỗi tải câu hỏi.</p>';
+      }
+    }
+
+    function renderSidebar() {
+      const grid = document.getElementById('questionGrid');
+      grid.innerHTML = questions.map((_, i) => `<div id="qbtn-${i}" class="question-btn unanswered" onclick="goToQuestion(${i})">${i+1}</div>`).join('');
+      updateSidebar();
+    }
+
+    function updateSidebar() {
+      questions.forEach((_, i) => {
+        const btn = document.getElementById(`qbtn-${i}`);
+        if (!btn) return;
+        btn.className = 'question-btn unanswered';
+        if (i === current) btn.classList.add('current');
+        if (userAnswers[i]) {
+          if (userAnswers[i].isCorrect) {
+            btn.className = 'question-btn correct';
+          } else {
+            btn.className = 'question-btn wrong';
+          }
+          if (i === current) btn.classList.add('current');
+        }
+      });
+    }
+
+    function goToQuestion(i) { current = i; showQuestion(); }
+
+    function showQuestion() {
+      const quizDiv = document.getElementById('quiz');
+      if (current >= questions.length) { showResults(); return; }
+      const q = questions[current];
+      const ua = userAnswers[current] || { selectedIndices: [] };
+
+      const optionsHTML = q.options.map((opt, idx) => {
+        const label = String.fromCharCode(65 + idx);
+        let cls = 'option';
+        if (userAnswers[current] || reviewMode) {
+          if (q.correctIndices.includes(idx)) cls += ' correct';
+          else if ((ua.selectedIndices || []).includes(idx)) cls += ' wrong';
+        }
+        return `<label class="${cls}"><input type='${q.type === 'single' ? 'radio' : 'checkbox'}' name='option' value='${idx}' ${ua.selectedIndices && ua.selectedIndices.includes(idx) ? 'checked' : ''}>${label}. ${opt}</label>`;
+      }).join('\n');
+
+      quizDiv.innerHTML = `
+        <div class="question">Câu ${current+1}: ${q.question}</div>
+        <form id="quizForm">
+          ${optionsHTML}
+          <div class="navigation">
+            <button type="button" class="submit-btn" onclick="submitAnswer()">Trả lời</button>
+            <button type="button" class="prev-btn" onclick="prevQuestion()" ${current===0?"disabled":""}>Câu trước</button>
+            <button type="button" class="next-btn" onclick="nextQuestion()">Câu tiếp theo</button>
+          </div>
+        </form>
+        <div id="feedback"></div>
+      `;
+
+      if (userAnswers[current]) showFeedback(userAnswers[current], q);
+      updateSidebar();
+    }
+
+    function submitAnswer() {
+      const q = questions[current];
+      const checked = Array.from(document.querySelectorAll('input[name="option"]:checked'));
+      const selectedIndices = checked.map(c => parseInt(c.value, 10));
+
+      const isCorrect = arraysEqual(selectedIndices, q.correctIndices);
+      userAnswers[current] = { selectedIndices, isCorrect, explanation: q.explanation || '' };
+      score = userAnswers.reduce((acc, ua) => acc + ((ua && ua.isCorrect) ? 1 : 0), 0);
+      showQuestion();
+    }
+
+    function showFeedback(ua, q) {
+      const fb = document.getElementById('feedback');
+      if (!fb) return;
+      fb.innerHTML = ua.isCorrect ? `<div class="correct-box">Chính xác!</div>` : `<div class="wrong-box">Sai rồi!</div>`;
+      if (q.explanation) fb.innerHTML += `<p class="explanation">Giải thích: ${q.explanation}</p>`;
+    }
+
+    function nextQuestion() { if (current < questions.length - 1) { current++; showQuestion(); } else showResults(); }
+    function prevQuestion() { if (current > 0) { current--; showQuestion(); } }
+
+    function arraysEqual(a, b) {
+      if (!Array.isArray(a) || !Array.isArray(b)) return false;
+      if (a.length !== b.length) return false;
+      const as = a.slice().sort((x,y)=>x-y);
+      const bs = b.slice().sort((x,y)=>x-y);
+      return as.every((v,i) => v === bs[i]);
+    }
+
+    function showResults() {
+      const quizDiv = document.getElementById('quiz');
+      quizDiv.innerHTML = `
+        <div class="result">
+          <h2>Hoàn thành!</h2>
+          <p>Điểm số của bạn: ${score}/${questions.length}</p>
+          <button class="retry-btn" onclick="restartQuiz()">Làm lại</button>
+          <button class="review-btn" onclick="reviewAnswers()">Xem lại câu trả lời</button>
+        </div>
+      `;
+      updateSidebar();
+    }
+
+    function restartQuiz() { current = 0; score = 0; userAnswers = []; reviewMode = false; renderSidebar(); showQuestion(); }
+    function reviewAnswers() { current = 0; reviewMode = true; showQuestion(); }
+
+    loadQuestions();
+  </script>
+</body>
+</html>
