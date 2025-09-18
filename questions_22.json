@@ -1,0 +1,95 @@
+[
+  {
+    "question": "A data engineer needs to use an Amazon QuickSight dashboard that is based on Amazon Athena queries on data that is stored in an Amazon S3 bucket. When the data engineer connects to the QuickSight dashboard, the data engineer receives an error message that indicates insufficient permissions.\nWhich factors could cause to the permissions-related errors? (Choose two.)",
+    "options": [
+      "There is no connection between QuickSight and Athena.",
+      "QuickSight does not have access to the S3 bucket.",
+      "QuickSight does not have access to decrypt S3 data.",
+      "The Athena tables are not cataloged.",
+      "There is no IAM role assigned to QuickSight."
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "type": "multiple"
+  },
+  {
+    "question": "A company has a business intelligence platform on AWS. The company uses an AWS Storage Gateway Amazon S3 File Gateway to transfer files from the company's on-premises environment to an Amazon S3 bucket.<br><br>A data engineer needs to setup a process that will automatically launch an AWS Glue workflow to run a series of AWS Glue jobs when each file transfer finishes successfully.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Determine when the file transfers usually finish based on previous successful file transfers. Set up an Amazon EventBridge scheduled event to initiate the AWS Glue jobs at that time of day.",
+      "Set up an on-demand AWS Glue workflow so that the data engineer can start the AWS Glue workflow when each file transfer is complete.",
+      "Set up an AWS Lambda function that will invoke the AWS Glue Workflow. Set up an event for the creation of an S3 object as a trigger for the Lambda function.",
+      "Set up an Amazon EventBridge event that initiates the AWS Glue workflow after every successful S3 File Gateway file transfer event."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A retail company uses Amazon Aurora PostgreSQL to process and store live transactional data. The company uses an Amazon Redshift cluster for a data warehouse.<br><br>An extract, transform, and load (ETL) job runs every morning to update the Redshift cluster with new data from the PostgreSQL database. The company has grown rapidly and needs to cost optimize the Redshift cluster.<br><br>A data engineer needs to create a solution to archive historical data. The data engineer must be able to run analytics queries that effectively combine data from live transactional data in PostgreSQL, current data in Redshift, and archived historical data. The solution must keep only the most recent 15 months of data in Amazon Redshift to reduce costs.<br><br>Which combination of steps will meet these requirements? (Choose two.)",
+    "options": [
+      "Configure the Amazon Redshift Federated Query feature to query live transactional data that is in the PostgreSQL database.",
+      "Schedule a monthly job to copy data that is older than 15 months to Amazon S3 by using the UNLOAD command. Delete the old data from the Redshift cluster. Configure Amazon Redshift Spectrum to access historical data in Amazon S3.",
+      "Schedule a monthly job to copy data that is older than 15 months to Amazon S3 Glacier Flexible Retrieval by using the UNLOAD command. Delete the old data from the Redshift cluster. Configure Redshift Spectrum to access historical data from S3 Glacier Flexible Retrieval.",
+      "Configure Amazon Redshift Spectrum to query live transactional data that is in the PostgreSQL database.",
+      "Create a materialized view in Amazon Redshift that combines live, current, and historical data from different sources."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A manufacturing company has many IoT devices in facilities around the world. The company uses Amazon Kinesis Data Streams to collect data from the devices. The data includes device ID, capture date, measurement type, measurement value, and facility ID. The company uses facility ID as the partition key.<br><br>The company's operations team recently observed many WriteThroughputExceeded exceptions. The operations team found that some shards were heavily used but other shards were generally idle.<br><br>How should the company resolve the issues that the operations team observed?",
+    "options": [
+      "Change the partition key from facility ID to a randomly generated key.",
+      "Archive the data on the producer's side.",
+      "Change the partition key from facility ID to capture date.",
+      "Increase the number of shards."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer wants to improve the performance of SQL queries in Amazon Athena that run against a sales data table.<br><br>The data engineer wants to understand the execution plan of a specific SQL statement. The data engineer also wants to see the computational cost of each operation in a SQL query.<br><br>Which statement does the data engineer need to run to meet these requirements?",
+    "options": [
+      "EXPLAIN SELECT * FROM sales;",
+      "EXPLAIN ANALYZE SELECT * FROM sales;",
+      "EXPLAIN FROM sales;",
+      "EXPLAIN ANALYZE FROM sales;"
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer needs to schedule a workflow that runs a set of AWS Glue jobs every day. The data engineer does not require the Glue jobs to run or finish at a specific time.\nWhich solution will run the Glue jobs in the MOST cost-effective way?",
+    "options": [
+      "Choose the FLEX execution class in the Glue job properties.",
+      "Choose the STANDARD execution class in the Glue job properties.",
+      "Choose the latest version in the GlueVersion field in the Glue job properties.",
+      "Use the Spot Instance type in Glue job properties."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A company plans to provision a log delivery stream within a VPC. The company configured the VPC flow logs to publish to Amazon CloudWatch Logs. The company needs to send the flow logs to Splunk in near real time for further analysis.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Configure an Amazon Kinesis Data Streams data stream to use Splunk as the destination. Create a CloudWatch Logs subscription filter to send log events to the data stream.",
+      "Create an Amazon Kinesis Data Firehose delivery stream to use Splunk as the destination. Create an AWS Lambda function to send the flow logs from CloudWatch Logs to the delivery stream.",
+      "Configure an Amazon Kinesis Data Streams data stream to use Splunk as the destination. Create an AWS Lambda function to send the flow logs from CloudWatch Logs to the data stream.",
+      "Create an Amazon Kinesis Data Firehose delivery stream to use Splunk as the destination. Create a CloudWatch Logs subscription filter to send log events to the delivery stream."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company has a data lake on AWS. The data lake ingests sources of data from business units. The company uses Amazon Athena for queries. The storage layer is Amazon S3 with an AWS Glue Data Catalog as a metadata repository.<br><br>The company wants to make the data available to data scientists and business analysts. However, the company first needs to manage fine-grained, column-level data access for Athena based on the user roles and responsibilities.<br><br>Which solution will meet these requirements?",
+    "options": [
+      "Set up AWS Lake Formation. Define security policy-based rules for the users and applications by IAM role in Lake Formation.",
+      "Define an IAM identity-based policy for AWS Glue tables. Attach the same policy to IAM roles. Associate the IAM roles with IAM groups that contain the users.",
+      "Create a resource share in AWS Resource Access Manager (AWS RAM) to grant access to IAM users.",
+      "Define an IAM resource-based policy for AWS Glue tables. Attach the same policy to IAM user groups."
+    ],
+    "answer": "A",
+    "type": "single"
+  }
+]

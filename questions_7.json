@@ -1,0 +1,120 @@
+[
+  {
+    "question": "A transportation company wants to track vehicle movements by capturing geolocation records. The records are 10 bytes in size. The company receives up to 10.000 records every second. Data transmission delays of a few minutes are acceptable because of unreliable network conditions.<br><br>The transportation company wants to use Amazon Kinesis Data Streams to ingest the geolocation data. The company needs a reliable mechanism to send data to Kinesis Data Streams. The company needs to maximize the throughput efficiency of the Kinesis shards.<br><br>Which solution will meet these requirements in the MOST operationally efficient way?",
+    "options": [
+      "Kinesis Agent",
+      "Amazon Kinesis Data Firehose",
+      "Kinesis SDK",
+      "Kinesis Producer Library (KPL)"
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "An investment company needs to manage and extract insights from a volume of semi-structured data that grows continuously.<br><br>A data engineer needs to deduplicate the semi-structured data, remove records that are duplicates, and remove common misspellings of duplicates.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Use the FindMatches feature of AWS Glue to remove duplicate records.",
+      "Use Amazon Neptune ML and an Apache Gremlin script to remove duplicate records.",
+      "Use the global tables feature of Amazon DynamoDB to prevent duplicate data.",
+      "Use non-Windows functions in Amazon Athena to remove duplicate records."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer needs to securely transfer 5 TB of data from an on-premises data center to an Amazon S3 bucket. Approximately 5% of the data changes every day. Updates to the data need to be regularly proliferated to the S3 bucket. The data includes files that are in multiple formats. The data engineer needs to automate the transfer process and must schedule the process to run periodically.\nWhich AWS service should the data engineer use to transfer the data in the MOST operationally efficient way?",
+    "options": [
+      "AWS DataSync",
+      "AWS Direct Connect",
+      "Amazon S3 Transfer Acceleration",
+      "AWS Glue"
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "An ecommerce company operates a complex order fulfilment process that spans several operational systems hosted in AWS. Each of the operational systems has a Java Database\nConnectivity (JDBC)-compliant relational database where the latest processing state is captured.<br><br>The company needs to give an operations team the ability to track orders on an hourly basis across the entire fulfillment process.<br><br>Which solution will meet these requirements with the LEAST development overhead?",
+    "options": [
+      "Use AWS Glue to build ingestion pipelines from the operational systems into Amazon Redshift Build dashboards in Amazon QuickSight that track the orders.",
+      "Use AWS Database Migration Service (AWS DMS) to capture changed records in the operational systems. Publish the changes to an Amazon DynamoDB table in a different AWS region from the source database. Build Grafana dashboards that track the orders.",
+      "Use AWS Database Migration Service (AWS DMS) to capture changed records in the operational systems. Publish the changes to an Amazon DynamoDB table in a different AWS region from the source database. Build Amazon QuickSight dashboards that track the orders.",
+      "Use AWS Glue to build ingestion pipelines from the operational systems into Amazon DynamoDBuild dashboards in Amazon QuickSight that track the orders."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A mobile gaming company wants to capture data from its gaming app. The company wants to make the data available to three internal consumers of the data. The data records are approximately 20 KB in size.<br><br>The company wants to achieve optimal throughput from each device that runs the gaming app. Additionally, the company wants to develop an application to process data streams. The stream-processing application must have dedicated throughput for each internal consumer.<br><br>Which solution will meet these requirements?",
+    "options": [
+      "Configure the mobile app to call the PutRecords API operation to send data to Amazon Kinesis Data Streams. Use the enhanced fan-out feature with a stream for each internal consumer.",
+      "Configure the mobile app to use the Amazon Kinesis Producer Library (KPL) to send data to Amazon Kinesis Data Firehose. Use the enhanced fan-out feature with a stream for each internal consumer.",
+      "Configure the mobile app to call the PutRecords API operation to send data to Amazon Kinesis Data Streams. Host the stream-processing application for each internal consumer on Amazon EC2 instances. Configure auto scaling for the EC2 instances.",
+      "Configure the mobile app to call the PutRecordBatch API operation to send data to Amazon Kinesis Data Firehose. Submit an AWS Support case to turn on dedicated throughput for the company’s AWS account. Allow each internal consumer to access the stream."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A company stores customer records in Amazon S3. The company must not delete or modify the customer record data for 7 years after each record is created. The root user also must not have the ability to delete or modify the data.<br><br>A data engineer wants to use S3 Object Lock to secure the data.<br><br>Which solution will meet these requirements?",
+    "options": [
+      "Enable governance mode on the S3 bucket. Use a default retention period of 7 years.",
+      "Place a legal hold on individual objects in the S3 bucket. Set the retention period to 7 years.",
+      "Set the retention period for individual objects in the S3 bucket to 7 years.",
+      "Enable compliance mode on the S3 bucket. Use a default retention period of 7 years."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer needs to create a new empty table in Amazon Athena that has the same schema as an existing table named old_table.<br><br>Which SQL statement should the data engineer use to meet this requirement?",
+    "options": [
+      "CREATE TABLE new_table AS SELECT * FROM old_tables;",
+      "CREATE TABLE new_table (LIKE old_table);",
+      "CREATE TABLE new_table AS (SELECT * FROM old_table) WITH NO DATA;",
+      "INSERT INTO new_table SELECT * FROM old_table;"
+    ],
+    "answer": "D",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer needs to create an Amazon Athena table based on a subset of data from an existing Athena table named cities_world. The cities_world table contains cities that are located around the world. The data engineer must create a new table named cities_us to contain only the cities from cities_world that are located in the US.<br><br>Which SQL statement should the data engineer use to meet this requirement?",
+    "options": [
+      "INSERT INTO cities_usa (city,state) SELECT city, state FROM cities_world WHERE country=’usa’;",
+      "INSERT INTO cities_usa SELECT city, state FROM cities_world WHERE country=’usa’;",
+      "UPDATE cities_usa SET (city, state) = (SELECT city, state FROM cities_world WHERE country=’usa’);",
+      "MOVE city, state FROM cities_world TO cities_usa WHERE country=’usa’;"
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A company saves customer data to an Amazon S3 bucket. The company uses server-side encryption with AWS KMS keys (SSE-KMS) to encrypt the bucket. The dataset includes personally identifiable information (PII) such as social security numbers and account details.<br><br>Data that is tagged as PII must be masked before the company uses customer data for analysis. Some users must have secure access to the PII data during the pre-processing phase. The company needs a low-maintenance solution to mask and secure the PII data throughout the entire engineering pipeline.<br><br>Which combination of solutions will meet these requirements? (Choose two.)",
+    "options": [
+      "Use AWS Glue DataBrew to perform extract, transform, and load (ETL) tasks that mask the PII data before analysis.",
+      "Configure an Amazon Macie discovery job for the S3 bucket.",
+      "Use AWS Identity and Access Management (IAM) to manage permissions and to control access to the PII data.",
+      "Use Amazon GuardDuty to monitor access patterns for the PII data that is used in the engineering pipeline.",
+      "Write custom scripts in an application to mask the PII data and to control access."
+    ],
+    "answer": [
+      "A",
+      "D"
+    ],
+    "type": "multiple"
+  },
+  {
+    "question": "A retail company is using an Amazon Redshift cluster to support real-time inventory management. The company has deployed an ML model on a real-time endpoint in Amazon SageMaker.<br><br>The company wants to make real-time inventory recommendations. The company also wants to make predictions about future inventory needs.<br><br>Which solutions will meet these requirements? (Choose two.)",
+    "options": [
+      "Use Amazon Redshift ML to generate inventory recommendations.",
+      "Use Amazon Redshift ML to schedule regular data exports for offline model training.",
+      "Use SageMaker Autopilot to create inventory management dashboards in Amazon Redshift.",
+      "Use SQL to invoke a remote SageMaker endpoint for prediction.",
+      "Use Amazon Redshift as a file storage system to archive old inventory management reports."
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "type": "multiple"
+  }
+]

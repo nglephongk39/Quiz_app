@@ -1,0 +1,94 @@
+[
+  {
+    "question": "A company uses AWS Step Functions to orchestrate a data pipeline. The pipeline consists of Amazon EMR jobs that ingest data from data sources and store the data in an Amazon S3 bucket. The pipeline also includes EMR jobs that load the data to Amazon Redshift.\nThe company's cloud infrastructure team manually built a Step Functions state machine. The cloud infrastructure team launched an EMR cluster into a VPC to support the EMR jobs. However, the deployed Step Functions state machine is not able to run the EMR jobs.\nWhich combination of steps should the company take to identify the reason the Step Functions state machine is not able to run the EMR jobs? (Choose two.)",
+    "options": [
+      "Use AWS CloudFormation to automate the Step Functions state machine deployment. Create a step to pause the state machine during the EMR jobs that fail. Configure the step to wait for a human user to send approval through an email message. Include details of the EMR task in the email message for further analysis.",
+      "Check for entries in Amazon CloudWatch for the newly created EMR cluster. Change the AWS Step Functions state machine code to use Amazon EMR on EKS. Change the IAM access policies and the security group configuration for the Step Functions state machine code to reflect inclusion of Amazon Elastic Kubernetes Service (Amazon EKS).",
+      "Query the flow logs for the VPC. Determine whether the traffic that originates from the EMR cluster can successfully reach the data providers. Determine whether any security group that might be attached to the Amazon EMR cluster allows connections to the data source servers on the informed ports.",
+      "Verify that the Step Functions state machine code has all IAM permissions that are necessary to create and run the EMR jobs. Verify that the Step Functions state machine code also includes IAM permissions to access the Amazon S3 buckets that the EMR jobs use. Use Access Analyzer for S3 to check the S3 access properties.",
+      "Check the retry scenarios that the company configured for the EMR jobs. Increase the number of seconds in the interval between each EMR task. Validate that each fallback state has the appropriate catch for each decision state. Configure an Amazon Simple Notification Service (Amazon SNS) topic to store the error messages."
+    ],
+    "answer": [
+      "B",
+      "D"
+    ],
+    "type": "multiple"
+  },
+  {
+    "question": "A data engineer maintains custom Python scripts that perform a data formatting process that many AWS Lambda functions use. When the data engineer needs to modify the Python scripts, the data engineer must manually update all the Lambda functions.\nThe data engineer requires a less manual way to update the Lambda functions.\nWhich solution will meet this requirement?",
+    "options": [
+      "Store a pointer to the custom Python scripts in the execution context object in a shared Amazon S3 bucket.",
+      "Store a pointer to the custom Python scripts in environment variables in a shared Amazon S3 bucket.",
+      "Assign the same alias to each Lambda function. Call reach Lambda function by specifying the function's alias.",
+      "Package the custom Python scripts into Lambda layers. Apply the Lambda layers to the Lambda functions."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company uses Amazon Redshift for its data warehouse. The company must automate refresh schedules for Amazon Redshift materialized views.\nWhich solution will meet this requirement with the LEAST effort?",
+    "options": [
+      "Use Apache Airflow to refresh the materialized views.",
+      "Use the query editor v2 in Amazon Redshift to refresh the materialized views.",
+      "Use an AWS Glue workflow to refresh the materialized views.",
+      "Use an AWS Lambda user-defined function (UDF) within Amazon Redshift to refresh the materialized views."
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer must orchestrate a data pipeline that consists of one AWS Lambda function and one AWS Glue job. The solution must integrate with AWS services.\nWhich solution will meet these requirements with the LEAST management overhead?",
+    "options": [
+      "Use an AWS Step Functions workflow that includes a state machine. Configure the state machine to run the Lambda function and then the AWS Glue job.",
+      "Use an AWS Glue workflow to run the Lambda function and then the AWS Glue job.",
+      "Use an Apache Airflow workflow that is deployed on Amazon Elastic Kubernetes Service (Amazon EKS). Define a directed acyclic graph (DAG) in which the first task is to call the Lambda function and the second task is to call the AWS Glue job.",
+      "Use an Apache Airflow workflow that is deployed on an Amazon EC2 instance. Define a directed acyclic graph (DAG) in which the first task is to call the Lambda function and the second task is to call the AWS Glue job."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A company needs to set up a data catalog and metadata management for data sources that run in the AWS Cloud. The company will use the data catalog to maintain the metadata of all the objects that are in a set of data stores. The data stores include structured sources such as Amazon RDS and Amazon Redshift. The data stores also include semistructured sources such as JSON files and .xml files that are stored in Amazon S3.\nThe company needs a solution that will update the data catalog on a regular basis. The solution also must detect changes to the source metadata.\nWhich solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Use Amazon Aurora as the data catalog. Create AWS Lambda functions that will connect to the data catalog. Configure the Lambda functions to gather the metadata information from multiple sources and to update the Aurora data catalog. Schedule the Lambda functions to run periodically.",
+      "Use Amazon DynamoDB as the data catalog. Create AWS Lambda functions that will connect to the data catalog. Configure the Lambda functions to gather the metadata information from multiple sources and to update the DynamoDB data catalog. Schedule the Lambda functions to run periodically.",
+      "Use the AWS Glue Data Catalog as the central metadata repository. Extract the schema for Amazon RDS and Amazon Redshift sources, and build the Data Catalog. Use AWS Glue crawlers for data that is in Amazon S3 to infer the schema and to automatically update the Data Catalog.",
+      "Use the AWS Glue Data Catalog as the central metadata repository. Use AWS Glue crawlers to connect to multiple data stores and to update the Data Catalog with metadata changes. Schedule the crawlers to run periodically to update the metadata catalog."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company stores data from an application in an Amazon DynamoDB table that operates in provisioned capacity mode. The workloads of the application have predictable throughput load on a regular schedule. Every Monday, there is an immediate increase in activity early in the morning. The application has very low usage during weekends.\nThe company must ensure that the application performs consistently during peak usage times.\nWhich solution will meet these requirements in the MOST cost-effective way?",
+    "options": [
+      "Increase the provisioned capacity to the maximum capacity that is currently present during peak load times.",
+      "Use AWS Application Auto Scaling to schedule higher provisioned capacity for peak usage times. Schedule lower capacity during off-peak times.",
+      "Change the capacity mode from provisioned to on-demand. Configure the table to scale up and scale down based on the load on the table.",
+      "Divide the table into two tables. Provision each table with half of the provisioned capacity of the original table. Spread queries evenly across both tables."
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A company is planning to migrate on-premises Apache Hadoop clusters to Amazon EMR. The company also needs to migrate a data catalog into a persistent storage solution.\nThe company currently stores the data catalog in an on-premises Apache Hive metastore on the Hadoop clusters. The company requires a serverless solution to migrate the data catalog.\nWhich solution will meet these requirements MOST cost-effectively?",
+    "options": [
+      "Use AWS Database Migration Service (AWS DMS) to migrate the Hive metastore into Amazon S3. Configure AWS Glue Data Catalog to scan Amazon S3 to produce the data catalog.",
+      "Configure an external Hive metastore in Amazon EMR. Migrate the existing on-premises Hive metastore into Amazon EMR. Use Amazon Aurora MySQL to store the company's data catalog.",
+      "Configure a new Hive metastore in Amazon EMR. Migrate the existing on-premises Hive metastore into Amazon EMR. Use the new metastore as the company's data catalog.",
+      "Configure a Hive metastore in Amazon EMR. Migrate the existing on-premises Hive metastore into Amazon EMR. Use AWS Glue Data Catalog to store the company's data catalog as an external data catalog."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company uses an Amazon Redshift provisioned cluster as its database. The Redshift cluster has five reserved ra3.4xlarge nodes and uses key distribution.\nA data engineer notices that one of the nodes frequently has a CPU load over 90%. SQL Queries that run on the node are queued. The other four nodes usually have a CPU load under 15% during daily operations.\nThe data engineer wants to maintain the current number of compute nodes. The data engineer also wants to balance the load more evenly across all five compute nodes.\nWhich solution will meet these requirements?",
+    "options": [
+      "Change the sort key to be the data column that is most often used in a WHERE clause of the SQL SELECT statement.",
+      "Upgrade the reserved node from ra3.4xlarge to ra3.16xlarge.",
+      "Change the primary key to be the data column that is most often used in a WHERE clause of the SQL SELECT statement.",
+      "Change the distribution key to the table column that has the largest dimension."
+    ],
+    "answer": "B",
+    "type": "single"
+  }
+]

@@ -1,0 +1,120 @@
+[
+  {
+    "question": "A data engineer is processing and analyzing multiple terabytes of raw data that is in Amazon S3. The data engineer needs to clean and prepare the data. Then the data engineer needs to load the data into Amazon Redshift for analytics.<br><br>The data engineer needs a solution that will give data analysts the ability to perform complex queries. The solution must eliminate the need to perform complex extract, transform, and load (ETL) processes or to manage infrastructure.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Use Amazon EMR to prepare the data. Use AWS Step Functions to load the data into Amazon Redshift. Use Amazon QuickSight to run queries.",
+      "Use AWS Lambda to prepare the data. Use Amazon Kinesis Data Firehose to load the data into Amazon Redshift. Use Amazon Athena to run queries.",
+      "Use AWS Glue to prepare the data. Use AWS Database Migration Service (AVVS DMS) to load the data into Amazon Redshift. Use Amazon Redshift Spectrum to run queries.",
+      "Use AWS Glue DataBrew to prepare the data. Use AWS Glue to load the data into Amazon Redshift. Use Amazon Redshift to run queries."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company uses an AWS Lambda function to transfer files from a legacy SFTP environment to Amazon S3 buckets. The Lambda function is VPC enabled to ensure that all communications between the Lambda function and other AVS services that are in the same VPC environment will occur over a secure network.<br><br>The Lambda function is able to connect to the SFTP environment successfully. However, when the Lambda function attempts to upload files to the S3 buckets, the Lambda function returns timeout errors. A data engineer must resolve the timeout issues in a secure way.<br><br>Which solution will meet these requirements in the MOST cost-effective way?",
+    "options": [
+      "Create a NAT gateway in the public subnet of the VPC. Route network traffic to the NAT gateway.",
+      "Create a VPC interface endpoint for Amazon S3. Route network traffic to the VPC interface endpoint.",
+      "Use a VPC internet gateway to connect to the internet. Route network traffic to the VPC internet gateway.",
+      "Create a VPC gateway endpoint for Amazon S3. Route network traffic to the VPC gateway endpoint."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company reads data from customer databases that run on Amazon RDS. The databases contain many inconsistent fields. For example, a customer record field that iPnamed place_id in one database is named location_id in another database. The company needs to link customer records across different databases, even when customer record fields do not match.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Create a provisioned Amazon EMR cluster to process and analyze data in the databases. Connect to the Apache Zeppelin notebook. Use the FindMatches transform to find duplicate records in the data.",
+      "Create an AWS Glue crawler to craw the databases. Use Amazon SageMaker to construct Apache Spark ML pipelines to find duplicate records in the data.",
+      "Create a provisioned Amazon EMR cluster to process and analyze data in the databases. Connect to the Apache Zeppelin notebook. Use an Apache Spark ML model to find duplicate records in the data. Evaluate and tune the model by evaluating the performance and results.",
+      "Create an AWS Glue crawler to craw the databases. Use the FindMatches transform to find duplicate records in the data. Evaluate and tune the transform by evaluating the performance and results."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company is creating near real-time dashboards to visualize time series data. The company ingests data into Amazon Managed Streaming for Apache Kafka (Amazon MSK). A customized data pipeline consumes the data. The pipeline then writes data to Amazon Keyspaces (for Apache Cassandra), Amazon OpenSearch Service, and Apache Avro objects in Amazon S3.<br><br>Which solution will make the data available for the data visualizations with the LEAST latency?",
+    "options": [
+      "Create OpenSearch Dashboards by using the data from OpenSearch Service.",
+      "Use Amazon Athena to query the data from the Avro objects in Amazon S3. Configure Amazon Keyspaces as the data catalog. Connect Amazon QuickSight to Athena to create the dashboards.",
+      "Use AWS Glue to catalog the data. Use S3 Select to query the Avro objects in Amazon S3. Connect Amazon QuickSight to the S3 bucket to create the dashboards.",
+      "Use Amazon Athena with an Apache Hive metastore to query the Avro objects in Amazon S3. Use Amazon Managed Grafana to connect to Athena and to create the dashboards."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer maintains a materialized view that is based on an Amazon Redshift database. The view has a column named load_date that stores the date when each row was loaded.<br><br>The data engineer needs to reclaim database storage space by deleting all the rows from the materialized view.<br><br>Which command will reclaim the MOST database storage space?",
+    "options": [
+      "DELETE FROM materialized_view_name where 1=1",
+      "VACUUM table_name where load_date<=current_date\nmaterializedview",
+      "DELETE FROM materialized_view_name where load_date<=current_date",
+      "TRUNCATE materialized_view_name"
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A media company wants to use Amazon OpenSearch Service to analyze rea-time data about popular musical artists and songs. The company expects to ingest millions of new data events every day. The new data events will arrive through an Amazon Kinesis data stream. The company must transform the data and then ingest the data into the OpenSearch Service domain.<br><br>Which method should the company use to ingest the data with the LEAST operational overhead?",
+    "options": [
+      "Use Amazon Kinesis Data Firehose and an AWS Lambda function to transform the data and deliver the transformed data to OpenSearch Service.",
+      "Use an AWS Lambda function to call the Amazon Kinesis Agent to transform the data and deliver the transformed data OpenSearch Service.",
+      "Use the Kinesis Client Library (KCL) to transform the data and deliver the transformed data to OpenSearch Service.",
+      "Use a Logstash pipeline that has prebuilt filters to transform the data and deliver the transformed data to OpenSearch Service."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A company stores customer data tables that include customer addresses in an AWS Lake Formation data lake. To comply with new regulations, the company must ensure that users cannot access data for customers who are in Canada.<br><br>The company needs a solution that will prevent user access to rows for customers who are in Canada.<br><br>Which solution will meet this requirement with the LEAST operational effort?",
+    "options": [
+      "Set a row-level filter to prevent user access to a row where the country is Canada.",
+      "Set a column-level filter to prevent user access to a row where the country is Canada.",
+      "Apply a tag to all rows where Canada is the country. Prevent user access where the tag is equal to “Canada”.",
+      "Create an IAM role that restricts user access to an address where the country is Canada."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A company stores daily records of the financial performance of investment portfolios in .csv format in an Amazon S3 bucket. A data engineer uses AWS Glue crawlers to crawl the S3 data.\nThe data engineer must make the S3 data accessible daily in the AWS Glue Data Catalog.\nWhich solution will meet these requirements?",
+    "options": [
+      "Create an IAM role that includes the AmazonS3FullAccess policy. Associate the role with the crawler. Specify the S3 bucket path of the source data as the crawler's data store. Create a daily schedule to run the crawler. Configure the output destination to a new path in the existing S3 bucket.",
+      "Create an IAM role that includes the AmazonS3FullAccess policy. Associate the role with the crawler. Specify the S3 bucket path of the source data as the crawler's data store. Allocate data processing units (DPUs) to run the crawler every day. Specify a database name for the output.",
+      "Create an IAM role that includes the AWSGlueServiceRole policy. Associate the role with the crawler. Specify the S3 bucket path of the source data as the crawler's data store. Allocate data processing units (DPUs) to run the crawler every day. Configure the output destination to a new path in the existing S3 bucket.",
+      "Create an IAM role that includes the AWSGlueServiceRole policy. Associate the role with the crawler. Specify the S3 bucket path of the source data as the crawler's data store. Create a daily schedule to run the crawler. Specify a database name for the output."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer needs to use Amazon Neptune to develop graph applications.<br><br>Which programming languages should the engineer use to develop the graph applications? (Choose two.)",
+    "options": [
+      "Gremlin",
+      "ANSI SQL",
+      "SPARQL",
+      "SQL",
+      "Spark SQL"
+    ],
+    "answer": [
+      "A",
+      "D"
+    ],
+    "type": "multiple"
+  },
+  {
+    "question": "A retail company uses an Amazon Redshift data warehouse and an Amazon S3 bucket. The company ingests retail order data into the S3 bucket every day.<br><br>The company stores all order data at a single path within the S3 bucket. The data has more than 100 columns. The company ingests the order data from a third-party application that generates more than 30 files in CSV format every day. Each CSV file is between 50 and 70 MB in size.<br><br>The company uses Amazon Redshift Spectrum to run queries that select sets of columns. Users aggregate metrics based on daily orders. Recently, users have reported that the performance of the queries has degraded. A data engineer must resolve the performance issues for the queries.<br><br>Which combination of steps will meet this requirement with LEAST developmental effort? (Choose two.)",
+    "options": [
+      "Configure the third-party application to create the files in a columnar format.",
+      "Partition the order data in the S3 bucket based on order date.",
+      "Configure the third-party application to create the files in JSON format.",
+      "Develop an AWS Glue ETL job to convert the multiple daily CSV files to one file for each day.",
+      "Load the JSON data into the Amazon Redshift table in a SUPER type column."
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "type": "multiple"
+  }
+]

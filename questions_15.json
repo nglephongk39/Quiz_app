@@ -1,0 +1,105 @@
+[
+  {
+    "question": "A media company wants to improve a system that recommends media content to customer based on user behavior and preferences. To improve the recommendation system, the company needs to incorporate insights from third-party datasets into the company's existing analytics platform.\nThe company wants to minimize the effort and time required to incorporate third-party datasets.\nWhich solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Use API calls to access and integrate third-party datasets from AWS Data Exchange.",
+      "Use Amazon Kinesis Data Streams to access and integrate third-party datasets from AWS CodeCommit repositories.",
+      "Use Amazon Kinesis Data Streams to access and integrate third-party datasets from Amazon Elastic Container Registry (Amazon ECR).",
+      "Use API calls to access and integrate third-party datasets from AWS DataSync."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A company is migrating a legacy application to an Amazon S3 based data lake. A data engineer reviewed data that is associated with the legacy application. The data engineer found that the legacy data contained some duplicate information.\nThe data engineer must identify and remove duplicate information from the legacy application data.\nWhich solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Write a custom extract, transform, and load (ETL) job in Python. Use the DataFrame.drop_duplicates() function by importing the Pandas library to perform data deduplication.",
+      "Write a custom extract, transform, and load (ETL) job in Python. Import the Python dedupe library. Use the dedupe library to perform data deduplication.",
+      "Write an AWS Glue extract, transform, and load (ETL) job. Import the Python dedupe library. Use the dedupe library to perform data deduplication.",
+      "Write an AWS Glue extract, transform, and load (ETL) job. Use the FindMatches machine learning (ML) transform to transform the data to perform data deduplication."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company has a frontend ReactJS website that uses Amazon API Gateway to invoke REST APIs. The APIs perform the functionality of the website. A data engineer needs to write a Python script that can be occasionally invoked through API Gateway. The code must return results to API Gateway.\nWhich solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Deploy a custom Python script on an Amazon Elastic Container Service (Amazon ECS) cluster.",
+      "Deploy a custom Python script that can integrate with API Gateway on Amazon Elastic Kubernetes Service (Amazon EKS).",
+      "Create an AWS Lambda function. Ensure that the function is warm by scheduling an Amazon EventBridge rule to invoke the Lambda function every 5 minutes by using mock events.",
+      "Create an AWS Lambda Python function with provisioned concurrency."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company has a production AWS account that runs company workloads. The company's security team created a security AWS account to store and analyze security logs from the production AWS account. The security logs in the production AWS account are stored in Amazon CloudWatch Logs.\nThe company needs to use Amazon Kinesis Data Streams to deliver the security logs to the security AWS account.\nWhich solution will meet these requirements?",
+    "options": [
+      "Create a destination data stream in the production AWS account. In the security AWS account, create an IAM role that has cross-account permissions to Kinesis Data Streams in the production AWS account.",
+      "Create a destination data stream in the production AWS account. In the production AWS account, create an IAM role that has cross-account permissions to Kinesis Data Streams in the security AWS account.",
+      "Create a destination data stream in the security AWS account. Create an IAM role and a trust policy to grant CloudWatch Logs the permission to put data into the stream. Create a subscription filter in the production AWS account.",
+      "Create a destination data stream in the security AWS account. Create an IAM role and a trust policy to grant CloudWatch Logs the permission to put data into the stream. Create a subscription filter in the security AWS account."
+    ],
+    "answer": "D",
+    "type": "single"
+  },
+  {
+    "question": "A company uses Amazon S3 to store semi-structured data in a transactional data lake. Some of the data files are small, but other data files are tens of terabytes.\nA data engineer must perform a change data capture (CDC) operation to identify changed data from the data source. The data source sends a full snapshot as a JSON file every day and ingests the changed data into the data lake.\nWhich solution will capture the changed data MOST cost-effectively?",
+    "options": [
+      "Create an AWS Lambda function to identify the changes between the previous data and the current data. Configure the Lambda function to ingest the changes into the data lake.",
+      "Use an open source data lake format to merge the data source with the S3 data lake to insert the new data and update the existing data.",
+      "Ingest the data into an Amazon Aurora MySQL DB instance that runs Aurora Serverless. Use AWS Database Migration Service (AWS DMS) to write the changed data to the data lake.",
+      "Ingest the data into Amazon RDS for MySQL. Use AWS Database Migration Service (AWS DMS) to write the changed data to the data lake."
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer must manage the ingestion of real-time streaming data into AWS. The data engineer wants to perform real-time analytics on the incoming streaming data by using time-based aggregations over a window of up to 30 minutes. The data engineer needs a solution that is highly fault tolerant.\nWhich solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Use an AWS Lambda function that includes both the business and the analytics logic to perform time-based aggregations over a window of up to 30 minutes for the data in Amazon Kinesis Data Streams.",
+      "Use an AWS Lambda function that includes both the business and the analytics logic to perform aggregations for a tumbling window of up to 30 minutes, based on the event timestamp.",
+      "Use Amazon Managed Service for Apache Flink (previously known as Amazon Kinesis Data Analytics) to analyze the data by using multiple types of aggregations to perform time-based analytics over a window of up to 30 minutes.",
+      "Use Amazon Managed Service for Apache Flink (previously known as Amazon Kinesis Data Analytics) to analyze the data that might occasionally contain duplicates by using multiple types of aggregations."
+    ],
+    "answer": "D",
+    "type": "single"
+  },
+  {
+    "question": "A company is planning to upgrade its Amazon Elastic Block Store (Amazon EBS) General Purpose SSD storage from gp2 to gp3. The company wants to prevent any interruptions in its Amazon EC2 instances that will cause data loss during the migration to the upgraded storage.\nWhich solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Create snapshots of the gp2 volumes. Create new gp3 volumes from the snapshots. Attach the new gp3 volumes to the EC2 instances.",
+      "Change the volume type of the existing gp2 volumes to gp3. Enter new values for volume size, IOPS, and throughput.",
+      "Use AWS DataSync to create new gp3 volumes. Transfer the data from the original gp2 volumes to the new gp3 volumes.",
+      "Create new gp3 volumes. Gradually transfer the data to the new gp3 volumes. When the transfer is complete, mount the new gp3 volumes to the EC2 instances to replace the gp2 volumes."
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A company is migrating its database servers from Amazon EC2 instances that run Microsoft SQL Server to Amazon RDS for Microsoft SQL Server DB instances. The company's analytics team must export large data elements every day until the migration is complete. The data elements are the result of SQL joins across multiple tables. The data must be in Apache Parquet format. The analytics team must store the data in Amazon S3.\nWhich solution will meet these requirements in the MOST operationally efficient way?",
+    "options": [
+      "Create a view in the EC2 instance-based SQL Server databases that contains the required data elements. Create an AWS Glue job that selects the data directly from the view and transfers the data in Parquet format to an S3 bucket. Schedule the AWS Glue job to run every day.",
+      "Use a SQL query to create a view in the EC2 instance-based SQL Server databases that contains the required data elements. Create and run an AWS Glue crawler to read the view. Create an AWS Glue job that retrieves the data and transfers the data in Parquet format to an S3 bucket. Schedule the AWS Glue job to run every day.",
+      "Create an AWS Lambda function that queries the EC2 instance-based databases by using Java Database Connectivity (JDBC). Configure the Lambda function to retrieve the required data, transform the data into Parquet format, and transfer the data into an S3 bucket. Use Amazon EventBridge to schedule the Lambda function to run every day.",
+      "Schedule SQL Server Agent to run a daily SQL query that selects the desired data elements from the EC2 instance-based SQL Server databases. Configure the query to direct the output .csv objects to an S3 bucket. Create an S3 event that invokes an AWS Lambda function to transform the output format from .csv to Parquet."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A financial company wants to implement a data mesh. The data mesh must support centralized data governance, data analysis, and data access control. The company has decided to use AWS Glue for data catalogs and extract, transform, and load (ETL) operations.\nWhich combination of AWS services will implement a data mesh? (Choose two.)",
+    "options": [
+      "Use Amazon Aurora for data storage. Use an Amazon Redshift provisioned cluster for data analysis.",
+      "Use AWS Glue DataBrew for centralized data governance and access control.",
+      "Use Amazon RDS for data storage. Use Amazon EMR for data analysis.",
+      "Use Amazon S3 for data storage. Use Amazon Athena for data analysis.",
+      "Use AWS Lake Formation for centralized data governance and access control."
+    ],
+    "answer": [
+      "B",
+      "E"
+    ],
+    "type": "multiple"
+  }
+]

@@ -1,0 +1,105 @@
+[
+  {
+    "question": "A company has an application that uses an Amazon API Gateway REST API and an AWS Lambda function to retrieve data from an Amazon DynamoDB instance. Users recently reported intermittent high latency in the application's response times. A data engineer finds that the Lambda function experiences frequent throttling when the company's other Lambda functions experience increased invocations.<br><br>The company wants to ensure the API's Lambda function operate without being affected by other Lambda functions.<br><br>Which solution will meet this requirement MOST cost-effectively?",
+    "options": [
+      "Increase the number of read capacity unit (RCU) in DynamoDB.",
+      "Configure reserved concurrency for the Lambda function.",
+      "Increase the Lambda function timeout and allocated memory.",
+      "Configure provisioned concurrency for the Lambda function."
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer must use AWS services to ingest a dataset into an Amazon S3 data lake. The data engineer profiles the dataset and discovers that the dataset contains personally identifiable information (PII). The data engineer must implement a solution to profile the dataset and obfuscate the PII.\nWhich solution will meet this requirement with the LEAST operational effort?",
+    "options": [
+      "Use an Amazon Kinesis Data Firehose delivery stream to process the dataset. Create an AWS Lambda transform function to identify the PII. Use an AWS SDK to obfuscate the PII. Set the S3 data lake as the target for the delivery stream.",
+      "Use the Detect PII transform in AWS Glue Studio to identify the PII. Create a rule in AWS Glue Data Quality to obfuscate the PII. Use an AWS Step Functions state machine to orchestrate a data pipeline to ingest the data into the S3 data lake.",
+      "Ingest the dataset into Amazon DynamoDB. Create an AWS Lambda function to identify and obfuscate the PII in the DynamoDB table and to transform the data. Use the same Lambda function to ingest the data into the S3 data lake.",
+      "Use the Detect PII transform in AWS Glue Studio to identify the PII. Obfuscate the PII. Use an AWS Step Functions state machine to orchestrate a data pipeline to ingest the data into the S3 data lake."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company maintains multiple extract, transform, and load (ETL) workflows that ingest data from the company's operational databases into an Amazon S3 based data lake. The ETL workflows use AWS Glue and Amazon EMR to process data.\nThe company wants to improve the existing architecture to provide automated orchestration and to require minimal manual effort.\nWhich solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "AWS Glue workflows",
+      "AWS Lambda functions",
+      "Amazon Managed Workflows for Apache Airflow (Amazon MWAA) workflows",
+      "AWS Step Functions tasks"
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company currently stores all of its data in Amazon S3 by using the S3 Standard storage class.\nA data engineer examined data access patterns to identify trends. During the first 6 months, most data files are accessed several times each day. Between 6 months and 2 years, most data files are accessed once or twice each month. After 2 years, data files are accessed only once or twice each year.\nThe data engineer needs to use an S3 Lifecycle policy to develop new data storage rules. The new storage solution must continue to provide high availability.\nWhich solution will meet these requirements in the MOST cost-effective way?",
+    "options": [
+      "Transition objects to S3 One Zone-Infrequent Access (S3 One Zone-IA) after 6 months. Transfer objects to S3 Glacier Flexible Retrieval after 2 years.",
+      "Transition objects to S3 Standard-Infrequent Access (S3 Standard-IA) after 6 months. Transfer objects to S3 Glacier Deep Archive after 2 years.",
+      "Transition objects to S3 One Zone-Infrequent Access (S3 One Zone-IA) after 6 months. Transfer objects to S3 Glacier Deep Archive after 2 years.",
+      "Transition objects to S3 Standard-Infrequent Access (S3 Standard-IA) after 6 months. Transfer objects to S3 Glacier Flexible Retrieval after 2 years."
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A company maintains an Amazon Redshift provisioned cluster that the company uses for extract, transform, and load (ETL) operations to support critical analysis tasks. A sales team within the company maintains a Redshift cluster that the sales team uses for business intelligence (BI) tasks.\nThe sales team recently requested access to the data that is in the ETL Redshift cluster so the team can perform weekly summary analysis tasks. The sales team needs to join data from the ETL cluster with data that is in the sales team's BI cluster.\nThe company needs a solution that will share the ETL cluster data with the sales team without interrupting the critical analysis tasks. The solution must minimize usage of the computing resources of the ETL cluster.\nWhich solution will meet these requirements?",
+    "options": [
+      "Set up the sales team BI cluster as a consumer of the ETL cluster by using Redshift data sharing.",
+      "Create database views based on the sales team's requirements. Grant the sales team direct access to the ETL cluster.",
+      "Unload a copy of the data from the ETL cluster to an Amazon S3 bucket every week. Create an Amazon Redshift Spectrum table based on the content of the ETL cluster.",
+      "Create materialized views based on the sales team's requirements. Grant the sales team direct access to the ETL cluster."
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer needs to join data from multiple sources to perform a one-time analysis job. The data is stored in Amazon DynamoDB, Amazon RDS, Amazon Redshift, and Amazon S3.\nWhich solution will meet this requirement MOST cost-effectively?",
+    "options": [
+      "Use an Amazon EMR provisioned cluster to read from all sources. Use Apache Spark to join the data and perform the analysis.",
+      "Use Amazon Athena Federated Query to join the data from all data sources.",
+      "Use Redshift Spectrum to query data from DynamoDB, Amazon RDS, and Amazon S3 directly from Redshift.",
+      "Copy the data from DynamoDB, Amazon RDS, and Amazon Redshift into Amazon S3. Run Amazon Athena queries directly on the S3 files."
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A company wants to implement real-time analytics capabilities. The company wants to use Amazon Kinesis Data Streams and Amazon Redshift to ingest and process streaming data at the rate of several gigabytes per second. The company wants to derive near real-time insights by using existing business intelligence (BI) and analytics tools.\nWhich solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Use Kinesis Data Streams to stage data in Amazon S3. Use the COPY command to load data from Amazon S3 directly into Amazon Redshift to make the data immediately available for real-time analysis.",
+      "Create an external schema in Amazon Redshift to map the data from Kinesis Data Streams to an Amazon Redshift object. Create a materialized view to read data from the stream. Set the materialized view to auto refresh.",
+      "Connect Kinesis Data Streams to Amazon Kinesis Data Firehose. Use Kinesis Data Firehose to stage the data in Amazon S3. Use the COPY command to load the data from Amazon S3 to a table in Amazon Redshift.",
+      "Access the data from Kinesis Data Streams by using SQL queries. Create materialized views directly on top of the stream. Refresh the materialized views regularly to query the most recent stream data."
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer needs to use AWS Step Functions to design an orchestration workflow. The workflow must parallel process a large collection of data files and apply a specific transformation to each file.\nWhich Step Functions state should the data engineer use to meet these requirements?",
+    "options": [
+      "Parallel state",
+      "Map state",
+      "Wait state",
+      "Choice state"
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer runs Amazon Athena queries on data that is in an Amazon S3 bucket. The Athena queries use AWS Glue Data Catalog as a metadata table.\nThe data engineer notices that the Athena query plans are experiencing a performance bottleneck. The data engineer determines that the cause of the performance bottleneck is the large number of partitions that are in the S3 bucket. The data engineer must resolve the performance bottleneck and reduce Athena query planning time.\nWhich solutions will meet these requirements? (Choose two.)",
+    "options": [
+      "Create an AWS Glue partition index. Enable partition filtering.",
+      "Use Athena partition projection based on the S3 bucket prefix.",
+      "Transform the data that is in the S3 bucket to Apache Parquet format.",
+      "Bucket the data based on a column that the data have in common in a WHERE clause of the user query.",
+      "Use the Amazon EMR S3DistCP utility to combine smaller objects in the S3 bucket into larger objects."
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "type": "multiple"
+  }
+]

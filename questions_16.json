@@ -1,0 +1,105 @@
+[
+  {
+    "question": "A data engineering team is using an Amazon Redshift data warehouse for operational reporting. The team wants to prevent performance issues that might result from long- running queries. A data engineer must choose a system table in Amazon Redshift to record anomalies when a query optimizer identifies conditions that might indicate performance issues.\nWhich table views should the data engineer use to meet this requirement?",
+    "options": [
+      "STL_USAGE_CONTROL",
+      "STL_QUERY_METRICS",
+      "STL_PLAN_INFO",
+      "STL_ALERT_EVENT_LOG"
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer must ingest a source of structured data that is in .csv format into an Amazon S3 data lake. The .csv files contain 15 columns. Data analysts need to run Amazon Athena queries on one or two columns of the dataset. The data analysts rarely query the entire file.\nWhich solution will meet these requirements MOST cost-effectively?",
+    "options": [
+      "Use an AWS Glue PySpark job to ingest the source data into the data lake in .csv format.",
+      "Use an AWS Glue PySpark job to ingest the source data into the data lake in Apache Avro format.",
+      "Create an AWS Glue extract, transform, and load (ETL) job to read from the .csv structured data source. Configure the job to write the data into the data lake in Apache Parquet format.",
+      "Create an AWS Glue extract, transform, and load (ETL) job to read from the .csv structured data source. Configure the job to ingest the data into the data lake in JSON format."
+    ],
+    "answer": "D",
+    "type": "single"
+  },
+  {
+    "question": "A company has five offices in different AWS Regions. Each office has its own human resources (HR) department that uses a unique IAM role. The company stores employee records in a data lake that is based on Amazon S3 storage.\nA data engineering team needs to limit access to the records. Each HR department should be able to access records for only employees who are within the HR department's Region.\nWhich combination of steps should the data engineering team take to meet this requirement with the LEAST operational overhead? (Choose two.)",
+    "options": [
+      "Use data filters for each Region to register the S3 paths as data locations.",
+      "Modify the IAM roles of the HR departments to add a data filter for each department's Region.",
+      "Enable fine-grained access control in AWS Lake Formation. Add a data filter for each Region.",
+      "Register the S3 path as an AWS Lake Formation location.",
+      "Create a separate S3 bucket for each Region. Configure an IAM policy to allow S3 access. Restrict access based on Region."
+    ],
+    "answer": [
+      "B",
+      "D"
+    ],
+    "type": "multiple"
+  },
+  {
+    "question": "A company is developing an application that runs on Amazon EC2 instances. Currently, the data that the application generates is temporary. However, the company needs to persist the data, even if the EC2 instances are terminated.\nA data engineer must launch new EC2 instances from an Amazon Machine Image (AMI) and configure the instances to preserve the data.\nWhich solution will meet this requirement?",
+    "options": [
+      "Launch new EC2 instances by using an AMI that is backed by an EC2 instance store volume that contains the application data. Apply the default settings to the EC2 instances.",
+      "Launch new EC2 instances by using an AMI that is backed by an EC2 instance store volume. Attach an Amazon Elastic Block Store (Amazon EBS) volume to contain the application data. Apply the default settings to the EC2 instances.",
+      "Launch new EC2 instances by using an AMI that is backed by an Amazon Elastic Block Store (Amazon EBS) volume. Attach an additional EC2 instance store volume to contain the application data. Apply the default settings to the EC2 instances.",
+      "Launch new EC2 instances by using an AMI that is backed by a root Amazon Elastic Block Store (Amazon EBS) volume that contains the application data. Apply the default settings to the EC2 instances."
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A company uses Amazon Athena to run SQL queries for extract, transform, and load (ETL) tasks by using Create Table As Select (CTAS). The company must use Apache Spark instead of SQL to generate analytics.\nWhich solution will give the company the ability to use Spark to access Athena?",
+    "options": [
+      "Athena query settings",
+      "Athena data source",
+      "Athena query editor",
+      "Athena workgroup"
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A company needs to partition the Amazon S3 storage that the company uses for a data lake. The partitioning will use a path of the S3 object keys in the following format: s3://bucket/prefix/year=2023/month=01/day=01.\nA data engineer must ensure that the AWS Glue Data Catalog synchronizes with the S3 storage when the company adds new partitions to the bucket.\nWhich solution will meet these requirements with the LEAST latency?",
+    "options": [
+      "Schedule an AWS Glue crawler to run every morning.",
+      "Use code that writes data to Amazon S3 to invoke the Boto3 AWS Glue create_partition API call.",
+      "Run the MSCK REPAIR TABLE command from the AWS Glue console.",
+      "Manually run the AWS Glue CreatePartition API twice each day."
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "question": "A media company uses software as a service (SaaS) applications to gather data by using third-party tools. The company needs to store the data in an Amazon S3 bucket. The company will use Amazon Redshift to perform analytics based on the data.\nWhich AWS service or feature will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Amazon Managed Streaming for Apache Kafka (Amazon MSK)",
+      "AWS Glue Data Catalog",
+      "Amazon Kinesis",
+      "Amazon AppFlow"
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer is using Amazon Athena to analyze sales data that is in Amazon S3. The data engineer writes a query to retrieve sales amounts for 2023 for several products from a table named sales_data. However, the query does not return results for all of the products that are in the sales_data table. The data engineer needs to troubleshoot the query to resolve the issue.\nThe data engineer's original query is as follows:\nSELECT product_name, sum(sales_amount)<br><br>FROM sales_data -<br><br>WHERE year = 2023 -<br><br>GROUP BY product_name -\nHow should the data engineer modify the Athena query to meet these requirements?",
+    "options": [
+      "Replace sum(sales_amount) with count(*) for the aggregation.",
+      "Add HAVING sum(sales_amount) > 0 after the GROUP BY clause.",
+      "Remove the GROUP BY clause.",
+      "Change WHERE year = 2023 to WHERE extract(year FROM sales_data) = 2023."
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "question": "A data engineer has a one-time task to read data from objects that are in Apache Parquet format in an Amazon S3 bucket. The data engineer needs to query only one column of the data.\nWhich solution will meet these requirements with the LEAST operational overhead?",
+    "options": [
+      "Configure an AWS Lambda function to load data from the S3 bucket into a pandas dataframe. Write a SQL SELECT statement on the dataframe to query the required column.",
+      "Prepare an AWS Glue DataBrew project to consume the S3 objects and to query the required column.",
+      "Run an AWS Glue crawler on the S3 objects. Use a SQL SELECT statement in Amazon Athena to query the required column.",
+      "Use S3 Select to write a SQL SELECT statement to retrieve the required column from the S3 objects."
+    ],
+    "answer": "B",
+    "type": "single"
+  }
+]
