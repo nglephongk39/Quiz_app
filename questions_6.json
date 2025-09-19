@@ -3,9 +3,9 @@
     "question": "Two developers are working on separate application releases. The developers have created feature branches named Branch A and Branch B by using a GitHub repository’s master branch as the source.<br><br>The developer for Branch A deployed code to the production system. The code for Branch B will merge into a master branch in the following week’s scheduled application release.<br><br>Which command should the developer for Branch B run before the developer raises a pull request to the master branch?",
     "options": [
       "git diff branchB master\ngit commit -m",
+      "git pull master",
       "git rebase master",
-      "git fetch -b master",
-      "git pull master"
+      "git fetch -b master"
     ],
     "answer": "C",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A company loads transaction data for each day into Amazon Redshift tables at the end of each day. The company wants to have the ability to track which tables have been loaded and which tables still need to be loaded.\nA data engineer wants to store the load statuses of Redshift tables in an Amazon DynamoDB table. The data engineer creates an AWS Lambda function to publish the details of the load statuses to DynamoDB.\nHow should the data engineer invoke the Lambda function to write load statuses to the DynamoDB table?",
     "options": [
       "Use a second Lambda function to invoke the first Lambda function based on Amazon CloudWatch events.",
+      "Use the Amazon Redshift Data API to publish an event to Amazon EventBridge. Configure an EventBridge rule to invoke the Lambda function.",
       "Use the Amazon Redshift Data API to publish a message to an Amazon Simple Queue Service (Amazon SQS) queue. Configure the SQS queue to invoke the Lambda function.",
-      "Use a second Lambda function to invoke the first Lambda function based on AWS CloudTrail events.",
-      "Use the Amazon Redshift Data API to publish an event to Amazon EventBridge. Configure an EventBridge rule to invoke the Lambda function."
+      "Use a second Lambda function to invoke the first Lambda function based on AWS CloudTrail events."
     ],
     "answer": "B",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "A company receives test results from testing facilities that are located around the world. The company stores the test results in millions of 1 KB JSON files in an Amazon S3 bucket. A data engineer needs to process the files, convert them into Apache Parquet format, and load them into Amazon Redshift tables. The data engineer uses AWS Glue to process the files, AWS Step Functions to orchestrate the processes, and Amazon EventBridge to schedule jobs.<br><br>The company recently added more testing facilities. The time required to process files is increasing. The data engineer must reduce the data processing time.<br><br>Which solution will MOST reduce the data processing time?",
     "options": [
       "Use AWS Lambda to group the raw input files into larger files. Write the larger files back to Amazon S3. Use AWS Glue to process the files. Load the files into the Amazon Redshift tables.",
+      "Use the AWS Glue dynamic frame file-grouping option to ingest the raw input files. Process the files. Load the files into the Amazon Redshift tables.",
       "Use the Amazon Redshift COPY command to move the raw input files from Amazon S3 directly into the Amazon Redshift tables. Process the files in Amazon Redshift.",
-      "Use Amazon EMR instead of AWS Glue to group the raw input files. Process the files in Amazon EMR. Load the files into the Amazon Redshift tables.",
-      "Use the AWS Glue dynamic frame file-grouping option to ingest the raw input files. Process the files. Load the files into the Amazon Redshift tables."
+      "Use Amazon EMR instead of AWS Glue to group the raw input files. Process the files in Amazon EMR. Load the files into the Amazon Redshift tables."
     ],
     "answer": "B",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A data engineer uses Amazon Managed Workflows for Apache Airflow (Amazon MWAA) to run data pipelines in an AWS account.<br><br>A workflow recently failed to run. The data engineer needs to use Apache Airflow logs to diagnose the failure of the workflow.<br><br>Which log type should the data engineer use to diagnose the cause of the failure?",
     "options": [
       "YourEnvironmentName-WebServer",
+      "YourEnvironmentName-Scheduler",
       "YourEnvironmentName-DAGProcessing",
-      "YourEnvironmentName-Task",
-      "YourEnvironmentName-Scheduler"
+      "YourEnvironmentName-Task"
     ],
     "answer": "D",
     "type": "single"
@@ -47,9 +47,9 @@
     "question": "Files from multiple data sources arrive in an Amazon S3 bucket on a regular basis. A data engineer wants to ingest new files into Amazon Redshift in near real time when the new files arrive in the S3 bucket.<br><br>Which solution will meet these requirements?",
     "options": [
       "Use the query editor v2 to schedule a COPY command to load new files into Amazon Redshift.",
+      "Use the zero-ETL integration between Amazon Aurora and Amazon Redshift to load new files into Amazon Redshift.",
       "Use AWS Glue job bookmarks to extract, transform, and load (ETL) load new files into Amazon Redshift.",
-      "Use S3 Event Notifications to invoke an AWS Lambda function that loads new files into Amazon Redshift.",
-      "Use the zero-ETL integration between Amazon Aurora and Amazon Redshift to load new files into Amazon Redshift."
+      "Use S3 Event Notifications to invoke an AWS Lambda function that loads new files into Amazon Redshift."
     ],
     "answer": "D",
     "type": "single"
@@ -58,9 +58,9 @@
     "question": "A technology company currently uses Amazon Kinesis Data Streams to collect log data in real time. The company wants to use Amazon Redshift for downstream real-time queries and to enrich the log data.<br><br>Which solution will ingest data into Amazon Redshift with the LEAST operational overhead?",
     "options": [
       "Set up an Amazon Kinesis Data Firehose delivery stream to send data to a Redshift provisioned cluster table.",
+      "Set up an Amazon Kinesis Data Firehose delivery stream to send data to Amazon S3. Configure a Redshift provisioned cluster to load data every minute.",
       "Configure Amazon Managed Service for Apache Flink (previously known as Amazon Kinesis Data Analytics) to send data directly to a Redshift provisioned cluster table.",
-      "Use Amazon Redshift streaming ingestion from Kinesis Data Streams and to present data as a materialized view.",
-      "Set up an Amazon Kinesis Data Firehose delivery stream to send data to Amazon S3. Configure a Redshift provisioned cluster to load data every minute."
+      "Use Amazon Redshift streaming ingestion from Kinesis Data Streams and to present data as a materialized view."
     ],
     "answer": "D",
     "type": "single"
@@ -69,9 +69,9 @@
     "question": "A company maintains a data warehouse in an on-premises Oracle database. The company wants to build a data lake on AWS. The company wants to load data warehouse tables into Amazon S3 and synchronize the tables with incremental data that arrives from the data warehouse every day.<br><br>Each table has a column that contains monotonically increasing values. The size of each table is less than 50 GB. The data warehouse tables are refreshed every night between 1 AM and 2 AM. A business intelligence team queries the tables between 10 AM and 8 PM every day.<br><br>Which solution will meet these requirements in the MOST operationally efficient way?",
     "options": [
       "Use an AWS Database Migration Service (AWS DMS) full load plus CDC job to load tables that contain monotonically increasing data columns from the on-premises data warehouse to Amazon S3. Use custom logic in AWS Glue to append the daily incremental data to a full-load copy that is in Amazon S3.",
+      "Use an AWS Glue Java Database Connectivity (JDBC) connection. Configure a job bookmark for a column that contains monotonically increasing values. Write custom logic to append the daily incremental data to a full-load copy that is in Amazon S3.",
       "Use an AWS Database Migration Service (AWS DMS) full load migration to load the data warehouse tables into Amazon S3 every day. Overwrite the previous day's full-load copy every day.",
-      "Use AWS Glue to load a full copy of the data warehouse tables into Amazon S3 every day. Overwrite the previous day's full-load copy every day.",
-      "Use an AWS Glue Java Database Connectivity (JDBC) connection. Configure a job bookmark for a column that contains monotonically increasing values. Write custom logic to append the daily incremental data to a full-load copy that is in Amazon S3."
+      "Use AWS Glue to load a full copy of the data warehouse tables into Amazon S3 every day. Overwrite the previous day's full-load copy every day."
     ],
     "answer": "A",
     "type": "single"
@@ -80,9 +80,9 @@
     "question": "A company is building a data lake for a new analytics team. The company is using Amazon S3 for storage and Amazon Athena for query analysis. All data that is in Amazon S3 is in Apache Parquet format.<br><br>The company is running a new Oracle database as a source system in the company’s data center. The company has 70 tables in the Oracle database. All the tables have primary keys. Data can occasionally change in the source system. The company wants to ingest the tables every day into the data lake.<br><br>Which solution will meet this requirement with the LEAST effort?",
     "options": [
       "Create an Apache Sqoop job in Amazon EMR to read the data from the Oracle database. Configure the Sqoop job to write the data to Amazon S3 in Parquet format.",
+      "Create an AWS Glue connection to the Oracle database. Create an AWS Glue bookmark job to ingest the data incrementally and to write the data to Amazon S3 in Parquet format.",
       "Create an AWS Database Migration Service (AWS DMS) task for ongoing replication. Set the Oracle database as the source. Set Amazon S3 as the target. Configure the task to write the data in Parquet format.",
-      "Create an Oracle database in Amazon RDS. Use AWS Database Migration Service (AWS DMS) to migrate the on-premises Oracle database to Amazon RDS. Configure triggers on the tables to invoke AWS Lambda functions to write changed records to Amazon S3 in Parquet format.",
-      "Create an AWS Glue connection to the Oracle database. Create an AWS Glue bookmark job to ingest the data incrementally and to write the data to Amazon S3 in Parquet format."
+      "Create an Oracle database in Amazon RDS. Use AWS Database Migration Service (AWS DMS) to migrate the on-premises Oracle database to Amazon RDS. Configure triggers on the tables to invoke AWS Lambda functions to write changed records to Amazon S3 in Parquet format."
     ],
     "answer": "C",
     "type": "single"
@@ -91,9 +91,9 @@
     "question": "A data engineer configured an AWS Glue Data Catalog for data that is stored in Amazon S3 buckets. The data engineer needs to configure the Data Catalog to receive incremental updates.<br><br>The data engineer sets up event notifications for the S3 bucket and creates an Amazon Simple Queue Service (Amazon SQS) queue to receive the S3 events.<br><br>Which combination of steps should the data engineer take to meet these requirements with LEAST operational overhead? (Choose two.)",
     "options": [
       "Create an S3 event-based AWS Glue crawler to consume events from the SQS queue.",
+      "Define a time-based schedule to run the AWS Glue crawler, and perform incremental updates to the Data Catalog.",
       "Use an AWS Lambda function to directly update the Data Catalog based on S3 events that the SQS queue receives.",
       "Manually initiate the AWS Glue crawler to perform updates to the Data Catalog when there is a change in the S3 bucket.",
-      "Define a time-based schedule to run the AWS Glue crawler, and perform incremental updates to the Data Catalog.",
       "Use AWS Step Functions to orchestrate the process of updating the Data Catalog based on S3 events that the SQS queue receives."
     ],
     "answer": [
@@ -106,9 +106,9 @@
     "question": "A data engineer is building a data pipeline on AWS by using AWS Glue extract, transform, and load (ETL) jobs. The data engineer needs to process data from Amazon RDS and MongoDB, perform transformations, and load the transformed data into Amazon Redshift for analytics. The data updates must occur every hour.\nWhich combination of tasks will meet these requirements with the LEAST operational overhead? (Choose two.)",
     "options": [
       "Configure AWS Glue triggers to run the ETL jobs every hour.",
+      "Use AWS Glue DataBrew to clean and prepare the data for analytics.",
       "Use AWS Lambda functions to schedule and run the ETL jobs every hour.",
       "Use AWS Glue connections to establish connectivity between the data sources and Amazon Redshift.",
-      "Use AWS Glue DataBrew to clean and prepare the data for analytics.",
       "Use the Redshift Data API to load transformed data into Amazon Redshift."
     ],
     "answer": [

@@ -3,9 +3,9 @@
     "question": "A company plans to use Amazon Kinesis Data Firehose to store data in Amazon S3. The source data consists of 2 MB .csv files. The company must convert the .csv files to JSON format. The company must store the files in Apache Parquet format.<br><br>Which solution will meet these requirements with the LEAST development effort?",
     "options": [
       "Use Kinesis Data Firehose to convert the .csv files to JSON. Use an AWS Lambda function to store the files in Parquet format.",
+      "Use Kinesis Data Firehose to convert the .csv files to JSON and to store the files in Parquet format.",
       "Use Kinesis Data Firehose to invoke an AWS Lambda function that transforms the .csv files to JSON and stores the files in Parquet format.",
-      "Use Kinesis Data Firehose to invoke an AWS Lambda function that transforms the .csv files to JSON. Use Kinesis Data Firehose to store the files in Parquet format.",
-      "Use Kinesis Data Firehose to convert the .csv files to JSON and to store the files in Parquet format."
+      "Use Kinesis Data Firehose to invoke an AWS Lambda function that transforms the .csv files to JSON. Use Kinesis Data Firehose to store the files in Parquet format."
     ],
     "answer": "D",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A company is using an AWS Transfer Family server to migrate data from an on-premises environment to AWS. Company policy mandates the use of TLS 1.2 or above to encrypt the data in transit.<br><br>Which solution will meet these requirements?",
     "options": [
       "Generate new SSH keys for the Transfer Family server. Make the old keys and the new keys available for use.",
+      "Update the security group rules for the on-premises network to allow only connections that use TLS 1.2 or above.",
       "Update the security policy of the Transfer Family server to specify a minimum protocol version of TLS 1.2",
-      "Install an SSL certificate on the Transfer Family server to encrypt data transfers by using TLS 1.2.",
-      "Update the security group rules for the on-premises network to allow only connections that use TLS 1.2 or above."
+      "Install an SSL certificate on the Transfer Family server to encrypt data transfers by using TLS 1.2."
     ],
     "answer": "C",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "A company wants to migrate an application and an on-premises Apache Kafka server to AWS. The application processes incremental updates that an on-premises Oracle database sends to the Kafka server. The company wants to use the replatform migration strategy instead of the refactor strategy.<br><br>Which solution will meet these requirements with the LEAST management overhead?",
     "options": [
       "Amazon Kinesis Data Streams",
+      "Amazon Managed Streaming for Apache Kafka (Amazon MSK) provisioned cluster",
       "Amazon Kinesis Data Firehose",
-      "Amazon Managed Streaming for Apache Kafka (Amazon MSK) Serverless",
-      "Amazon Managed Streaming for Apache Kafka (Amazon MSK) provisioned cluster"
+      "Amazon Managed Streaming for Apache Kafka (Amazon MSK) Serverless"
     ],
     "answer": "D",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A data engineer is building an automated extract, transform, and load (ETL) ingestion pipeline by using AWS Glue. The pipeline ingests compressed files that are in an Amazon S3 bucket. The ingestion pipeline must support incremental data processing.<br><br>Which AWS Glue feature should the data engineer use to meet this requirement?",
     "options": [
       "Workflows",
+      "Triggers",
       "Job bookmarks",
-      "Classifiers",
-      "Triggers"
+      "Classifiers"
     ],
     "answer": "C",
     "type": "single"
@@ -47,9 +47,9 @@
     "question": "A banking company uses an application to collect large volumes of transactional data. The company uses Amazon Kinesis Data Streams for real-time analytics. The company’s application uses the PutRecord action to send data to Kinesis Data Streams.<br><br>A data engineer has observed network outages during certain times of day. The data engineer wants to configure exactly-once delivery for the entire processing pipeline.<br><br>Which solution will meet this requirement?",
     "options": [
       "Design the application so it can remove duplicates during processing by embedding a unique ID in each record at the source.",
+      "Update the checkpoint configuration of the Amazon Managed Service for Apache Flink (previously known as Amazon Kinesis Data Analytics) data collection application to avoid duplicate processing of events.",
       "Design the data source so events are not ingested into Kinesis Data Streams multiple times.",
-      "Stop using Kinesis Data Streams. Use Amazon EMR instead. Use Apache Flink and Apache Spark Streaming in Amazon EMR.",
-      "Update the checkpoint configuration of the Amazon Managed Service for Apache Flink (previously known as Amazon Kinesis Data Analytics) data collection application to avoid duplicate processing of events."
+      "Stop using Kinesis Data Streams. Use Amazon EMR instead. Use Apache Flink and Apache Spark Streaming in Amazon EMR."
     ],
     "answer": "A",
     "type": "single"
@@ -58,9 +58,9 @@
     "question": "A company stores logs in an Amazon S3 bucket. When a data engineer attempts to access several log files, the data engineer discovers that some files have been unintentionally deleted.<br><br>The data engineer needs a solution that will prevent unintentional file deletion in the future.<br><br>Which solution will meet this requirement with the LEAST operational overhead?",
     "options": [
       "Manually back up the S3 bucket on a regular basis.",
+      "Enable S3 Versioning for the S3 bucket.",
       "Configure replication for the S3 bucket.",
-      "Use an Amazon S3 Glacier storage class to archive the data that is in the S3 bucket.",
-      "Enable S3 Versioning for the S3 bucket."
+      "Use an Amazon S3 Glacier storage class to archive the data that is in the S3 bucket."
     ],
     "answer": "B",
     "type": "single"
@@ -69,9 +69,9 @@
     "question": "A manufacturing company collects sensor data from its factory floor to monitor and enhance operational efficiency. The company uses Amazon Kinesis Data Streams to publish the data that the sensors collect to a data stream. Then Amazon Kinesis Data Firehose writes the data to an Amazon S3 bucket.\nThe company needs to display a real-time view of operational efficiency on a large screen in the manufacturing facility.\nWhich solution will meet these requirements with the LOWEST latency?",
     "options": [
       "Use Amazon Managed Service for Apache Flink (previously known as Amazon Kinesis Data Analytics) to process the sensor data. Use a connector for Apache Flink to write data to an Amazon Timestream database. Use the Timestream database as a source to create a Grafana dashboard.",
+      "Configure the S3 bucket to send a notification to an AWS Lambda function when any new object is created. Use the Lambda function to publish the data to Amazon Aurora. Use Aurora as a source to create an Amazon QuickSight dashboard.",
       "Use Amazon Managed Service for Apache Flink (previously known as Amazon Kinesis Data Analytics) to process the sensor data. Create a new Data Firehose delivery stream to publish data directly to an Amazon Timestream database. Use the Timestream database as a source to create an Amazon QuickSight dashboard.",
-      "Use AWS Glue bookmarks to read sensor data from the S3 bucket in real time. Publish the data to an Amazon Timestream database. Use the Timestream database as a source to create a Grafana dashboard.",
-      "Configure the S3 bucket to send a notification to an AWS Lambda function when any new object is created. Use the Lambda function to publish the data to Amazon Aurora. Use Aurora as a source to create an Amazon QuickSight dashboard."
+      "Use AWS Glue bookmarks to read sensor data from the S3 bucket in real time. Publish the data to an Amazon Timestream database. Use the Timestream database as a source to create a Grafana dashboard."
     ],
     "answer": "A",
     "type": "single"
@@ -80,9 +80,9 @@
     "question": "A telecommunications company collects network usage data throughout each day at a rate of several thousand data points each second. The company runs an application to process the usage data in real time. The company aggregates and stores the data in an Amazon Aurora DB instance.<br><br>Sudden drops in network usage usually indicate a network outage. The company must be able to identify sudden drops in network usage so the company can take immediate remedial actions.<br><br>Which solution will meet this requirement with the LEAST latency?",
     "options": [
       "Create an AWS Lambda function to query Aurora for drops in network usage. Use Amazon EventBridge to automatically invoke the Lambda function every minute.",
+      "Modify the processing application to publish the data to an Amazon Kinesis data stream. Create an Amazon Managed Service for Apache Flink (previously known as Amazon Kinesis Data Analytics) application to detect drops in network usage.",
       "Replace the Aurora database with an Amazon DynamoDB table. Create an AWS Lambda function to query the DynamoDB table for drops in network usage every minute. Use DynamoDB Accelerator (DAX) between the processing application and DynamoDB table.",
-      "Create an AWS Lambda function within the Database Activity Streams feature of Aurora to detect drops in network usage.",
-      "Modify the processing application to publish the data to an Amazon Kinesis data stream. Create an Amazon Managed Service for Apache Flink (previously known as Amazon Kinesis Data Analytics) application to detect drops in network usage."
+      "Create an AWS Lambda function within the Database Activity Streams feature of Aurora to detect drops in network usage."
     ],
     "answer": "B",
     "type": "single"
@@ -91,9 +91,9 @@
     "question": "A finance company uses Amazon Redshift as a data warehouse. The company stores the data in a shared Amazon S3 bucket. The company uses Amazon Redshift Spectrum to access the data that is stored in the S3 bucket. The data comes from certified third-party data providers. Each third-party data provider has unique connection details.<br><br>To comply with regulations, the company must ensure that none of the data is accessible from outside the company's AWS environment.<br><br>Which combination of steps should the company take to meet these requirements? (Choose two.)",
     "options": [
       "Replace the existing Redshift cluster with a new Redshift cluster that is in a private subnet. Use an interface VPC endpoint to connect to the Redshift cluster. Use a NAT gateway to give Redshift access to the S3 bucket.",
+      "Create an AWS CloudHSM hardware security module (HSM) for each data provider. Encrypt each data provider's data by using the corresponding HSM for each data provider.",
       "Turn on enhanced VPC routing for the Amazon Redshift cluster. Set up an AWS Direct Connect connection and configure a connection between each data provider and the finance company’s VPC.",
       "Define table constraints for the primary keys and the foreign keys.",
-      "Create an AWS CloudHSM hardware security module (HSM) for each data provider. Encrypt each data provider's data by using the corresponding HSM for each data provider.",
       "Use federated queries to access the data from each data provider. Do not upload the data to the S3 bucket. Perform the federated queries through a gateway VPC endpoint."
     ],
     "answer": [
@@ -106,9 +106,9 @@
     "question": "A company is building an inventory management system and an inventory reordering system to automatically reorder products. Both systems use Amazon Kinesis Data Streams. The inventory management system uses the Amazon Kinesis Producer Library (KPL) to publish data to a stream. The inventory reordering system uses the Amazon Kinesis Client Library (KCL) to consume data from the stream. The company configures the stream to scale up and down as needed.<br><br>Before the company deploys the systems to production, the company discovers that the inventory reordering system received duplicated data.<br><br>Which factors could have caused the reordering system to receive duplicated data? (Choose two.)",
     "options": [
       "The producer experienced network-related timeouts.",
+      "The stream’s value for the IteratorAgeMilliseconds metric was too high.",
       "There was a change in the number of shards, record processors, or both.",
       "The AggregationEnabled configuration property was set to true.",
-      "The stream’s value for the IteratorAgeMilliseconds metric was too high.",
       "The max_records configuration property was set to a number that was too high."
     ],
     "answer": [

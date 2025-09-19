@@ -3,9 +3,9 @@
     "question": "A company needs a solution to manage costs for an existing Amazon DynamoDB table. The company also needs to control the size of the table. The solution must not disrupt any ongoing read or write operations. The company wants to use a solution that automatically deletes data from the table after 1 month.<br><br>Which solution will meet these requirements with the LEAST ongoing maintenance?",
     "options": [
       "Use the DynamoDB TTL feature to automatically expire data based on timestamps.",
+      "Configure a scheduled Amazon EventBridge rule to invoke an AWS Lambda function to check for data that is older than 1 month. Configure the Lambda function to delete old data.",
       "Configure a stream on the DynamoDB table to invoke an AWS Lambda function. Configure the Lambda function to delete data in the table that is older than 1 month.",
-      "Use an AWS Lambda function to periodically scan the DynamoDB table for data that is older than 1 month. Configure the Lambda function to delete old data.",
-      "Configure a scheduled Amazon EventBridge rule to invoke an AWS Lambda function to check for data that is older than 1 month. Configure the Lambda function to delete old data."
+      "Use an AWS Lambda function to periodically scan the DynamoDB table for data that is older than 1 month. Configure the Lambda function to delete old data."
     ],
     "answer": "A",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A company uses Amazon S3 to store data and Amazon QuickSight to create visualizations,<br><br>The company has an S3 bucket in an AWS account named Hub-Account. The S3 bucket is encrypted by an AWS Key Management Service (AWS KMS) key. The company's QuickSight instance is in a separate account named BI-Account.<br><br>The company updates the S3 bucket policy to grant access to the QuickSight service role. The company wants to enable cross-account access to allow QuickSight to interact with the S3 bucket.<br><br>Which combination of steps will meet this requirement? (Choose two.)",
     "options": [
       "Use the existing AWS KMS key to encrypt connections from QuickSight to the S3 bucket.",
+      "Add the S3 bucket as a resource that the QuickSight service role can access.",
       "Use AWS Resource Access Manager (AWS RAM) to share the S3 bucket with the BI-Account account.",
       "Add an IAM policy to the QuickSight service role to give QuickSight access to the KMS key that encrypts the S3 bucket.",
-      "Add the S3 bucket as a resource that the QuickSight service role can access.",
       "Add the KMS key as a resource that the QuickSight service role can access."
     ],
     "answer": "E",
@@ -26,9 +26,9 @@
     "question": "A car sales company maintains data about cars that are listed for sale in an area. The company receives data about new car listings from vendors who upload the data daily as compressed files into Amazon S3. The compressed files are up to 5 KB in size. The company wants to see the most up-to-date listings as soon as the data is uploaded to Amazon S3.<br><br>A data engineer must automate and orchestrate the data processing workflow of the listings to feed a dashboard. The data engineer must also provide the ability to perform one-time queries and analytical reporting. The query solution must be scalable.<br><br>Which solution will meet these requirements MOST cost-effectively?",
     "options": [
       "Use an Amazon EMR cluster to process incoming data. Use AWS Step Functions to orchestrate workflows. Use Apache Hive for one-time queries and analytical reporting. Use Amazon OpenSearch Service to bulk ingest the data into compute optimized instances. Use OpenSearch Dashboards in OpenSearch Service for the dashboard.",
+      "Use a provisioned Amazon EMR cluster to process incoming data. Use AWS Step Functions to orchestrate workflows. Use Amazon Athena for one-time queries and analytical reporting. Use Amazon QuickSight for the dashboard.",
       "Use AWS Glue to process incoming data. Use AWS Step Functions to orchestrate workflows. Use Amazon Redshift Spectrum for one-time queries and analytical reporting. Use OpenSearch Dashboards in Amazon OpenSearch Service for the dashboard.",
-      "Use AWS Glue to process incoming data. Use AWS Lambda and S3 Event Notifications to orchestrate workflows. Use Amazon Athena for one-time queries and analytical reporting. Use Amazon QuickSight for the dashboard.",
-      "Use a provisioned Amazon EMR cluster to process incoming data. Use AWS Step Functions to orchestrate workflows. Use Amazon Athena for one-time queries and analytical reporting. Use Amazon QuickSight for the dashboard."
+      "Use AWS Glue to process incoming data. Use AWS Lambda and S3 Event Notifications to orchestrate workflows. Use Amazon Athena for one-time queries and analytical reporting. Use Amazon QuickSight for the dashboard."
     ],
     "answer": "D",
     "type": "single"
@@ -37,9 +37,9 @@
     "question": "A company has AWS resources in multiple AWS Regions. The company has an Amazon EFS file system in each Region where the company operates. The company’s data science team operates within only a single Region. The data that the data science team works with must remain within the team's Region.<br><br>A data engineer needs to create a single dataset by processing files that are in each of the company's Regional EFS file systems. The data engineer wants to use an AWS Step Functions state machine to orchestrate AWS Lambda functions to process the data.<br><br>Which solution will meet these requirements with the LEAST effort?",
     "options": [
       "Peer the VPCs that host the EFS file systems in each Region with the VPC that is in the data science team’s Region. Enable EFS file locking. Configure the Lambda functions in the data science team's Region to mount each of the Region specific file systems. Use the Lambda functions to process the data.",
+      "Configure each of the Regional EFS file systems to replicate data to the data science team's Region. In the data science team’s Region, configure the Lambda functions to mount the replica file systems. Use the Lambda functions to process the data.",
       "Deploy the Lambda functions to each Region. Mount the Regional EFS file systems to the Lambda functions. Use the Lambda functions to process the data. Store the output in an Amazon S3 bucket in the data science team’s Region.",
-      "Use AWS DataSync to transfer files from each of the Regional EFS files systems to the file system that is in the data science team's Region. Configure the Lambda functions in the data science team's Region to mount the file system that is in the same Region. Use the Lambda functions to process the data.",
-      "Configure each of the Regional EFS file systems to replicate data to the data science team's Region. In the data science team’s Region, configure the Lambda functions to mount the replica file systems. Use the Lambda functions to process the data."
+      "Use AWS DataSync to transfer files from each of the Regional EFS files systems to the file system that is in the data science team's Region. Configure the Lambda functions in the data science team's Region to mount the file system that is in the same Region. Use the Lambda functions to process the data."
     ],
     "answer": "D",
     "type": "single"
@@ -48,9 +48,9 @@
     "question": "A company hosts its applications on Amazon EC2 instances. The company must use SSL/TLS connections that encrypt data in transit to communicate securely with AWS infrastructure that is managed by a customer.<br><br>A data engineer needs to implement a solution to simplify the generation, distribution, and rotation of digital certificates. The solution must automatically renew and deploy SSL/TLS certificates.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "Store self-managed certificates on the EC2 instances.",
+      "Use AWS Certificate Manager (ACM).",
       "Implement custom automation scripts in AWS Secrets Manager.",
-      "Use Amazon Elastic Container Service (Amazon ECS) Service Connect.",
-      "Use AWS Certificate Manager (ACM)."
+      "Use Amazon Elastic Container Service (Amazon ECS) Service Connect."
     ],
     "answer": "B",
     "type": "single"
@@ -59,9 +59,9 @@
     "question": "A company uses an Amazon Redshift cluster that runs on RA3 nodes. The company wants to scale read and write capacity to meet demand. A data engineer needs to identify a solution that will turn on concurrency scaling.\nWhich solution will meet this requirement?",
     "options": [
       "Turn on concurrency scaling in workload management (WLM) for Redshift Serverless workgroups.",
+      "Turn on concurrency scaling at the workload management (WLM) queue level in the Redshift cluster.",
       "Turn on concurrency scaling in the settings during the creation of any new Redshift cluster.",
-      "Turn on concurrency scaling for the daily usage quota for the Redshift cluster.",
-      "Turn on concurrency scaling at the workload management (WLM) queue level in the Redshift cluster."
+      "Turn on concurrency scaling for the daily usage quota for the Redshift cluster."
     ],
     "answer": "B",
     "type": "single"
@@ -70,9 +70,9 @@
     "question": "A data engineer is launching an Amazon EMR cluster. The data that the data engineer needs to load into the new cluster is currently in an Amazon S3 bucket. The data engineer needs to ensure that data is encrypted both at rest and in transit.<br><br>The data that is in the S3 bucket is encrypted by an AWS Key Management Service (AWS KMS) key. The data engineer has an Amazon S3 path that has a Privacy Enhanced Mail (PEM) file.<br><br>Which solution will meet these requirements?",
     "options": [
       "Create an Amazon EMR security configuration. Specify the appropriate AWS KMS key for at-rest encryption for the S3 bucket. Create a second security configuration. Specify the Amazon S3 path of the PEM file for in-transit encryption. Create the EMR cluster, and attach both security configurations to the cluster.",
+      "Create an Amazon EMR security configuration. Specify the appropriate AWS KMS key for local disk encryption for the S3 bucket. Specify the Amazon S3 path of the PEM file for in-transit encryption. Use the security configuration during EMR cluster creation.",
       "Create an Amazon EMR security configuration. Specify the appropriate AWS KMS key for at-rest encryption for the S3 bucket. Specify the Amazon S3 path of the PEM file for in-transit encryption. Use the security configuration during EMR cluster creation.",
-      "Create an Amazon EMR security configuration. Specify the appropriate AWS KMS key for at-rest encryption for the S3 bucket. Specify the Amazon S3 path of the PEM file for in-transit encryption. Create the EMR cluster, and attach the security configuration to the cluster.",
-      "Create an Amazon EMR security configuration. Specify the appropriate AWS KMS key for local disk encryption for the S3 bucket. Specify the Amazon S3 path of the PEM file for in-transit encryption. Use the security configuration during EMR cluster creation."
+      "Create an Amazon EMR security configuration. Specify the appropriate AWS KMS key for at-rest encryption for the S3 bucket. Specify the Amazon S3 path of the PEM file for in-transit encryption. Create the EMR cluster, and attach the security configuration to the cluster."
     ],
     "answer": "C",
     "type": "single"
@@ -81,9 +81,9 @@
     "question": "A company stores CSV files in an Amazon S3 bucket. A data engineer needs to process the data in the CSV files and store the processed data in a new S3 bucket.<br><br>The process needs to rename a column, remove specific columns, ignore the second row of each file, create a new column based on the values of the first row of the data, and filter the results by a numeric value of a column.<br><br>Which solution will meet these requirements with the LEAST development effort?",
     "options": [
       "Use AWS Glue Python jobs to read and transform the CSV files.",
+      "Use an AWS Glue custom crawler to read and transform the CSV files.",
       "Use an AWS Glue workflow to build a set of jobs to crawl and transform the CSV files.",
-      "Use AWS Glue DataBrew recipes to read and transform the CSV files.",
-      "Use an AWS Glue custom crawler to read and transform the CSV files."
+      "Use AWS Glue DataBrew recipes to read and transform the CSV files."
     ],
     "answer": "D",
     "type": "single"
@@ -92,9 +92,9 @@
     "question": "A company is planning to use a provisioned Amazon EMR cluster that runs Apache Spark jobs to perform big data analysis. The company requires high reliability. A big data team must follow best practices for running cost-optimized and long-running workloads on Amazon EMR. The team must find a solution that will maintain the company's current level of performance.\nWhich combination of resources will meet these requirements MOST cost-effectively? (Choose two.)",
     "options": [
       "Use Hadoop Distributed File System (HDFS) as a persistent data store.",
+      "Use Amazon S3 as a persistent data store.",
       "Use x86-based instances for core nodes and task nodes.",
       "Use Graviton instances for core nodes and task nodes.",
-      "Use Amazon S3 as a persistent data store.",
       "Use Spot Instances for all primary nodes."
     ],
     "answer": [

@@ -3,9 +3,9 @@
     "question": "A security company stores IoT data that is in JSON format in an Amazon S3 bucket. The data structure can change when the company upgrades the IoT devices. The company wants to create a data catalog that includes the IoT data. The company's analytics department will use the data catalog to index the data.\nWhich solution will meet these requirements MOST cost-effectively?",
     "options": [
       "Create an AWS Glue Data Catalog. Configure an AWS Glue Schema Registry. Create a new AWS Glue workload to orchestrate the ingestion of the data that the analytics department will use into Amazon Redshift Serverless.",
+      "Create an Amazon Redshift provisioned cluster. Create an Amazon Redshift Spectrum database for the analytics department to explore the data that is in Amazon S3. Create Redshift stored procedures to load the data into Amazon Redshift.",
       "Create an Amazon Athena workgroup. Explore the data that is in Amazon S3 by using Apache Spark through Athena. Provide the Athena workgroup schema and tables to the analytics department.",
-      "Create an AWS Glue Data Catalog. Configure an AWS Glue Schema Registry. Create AWS Lambda user defined functions (UDFs) by using the Amazon Redshift Data API. Create an AWS Step Functions job to orchestrate the ingestion of the data that the analytics department will use into Amazon Redshift Serverless.",
-      "Create an Amazon Redshift provisioned cluster. Create an Amazon Redshift Spectrum database for the analytics department to explore the data that is in Amazon S3. Create Redshift stored procedures to load the data into Amazon Redshift."
+      "Create an AWS Glue Data Catalog. Configure an AWS Glue Schema Registry. Create AWS Lambda user defined functions (UDFs) by using the Amazon Redshift Data API. Create an AWS Step Functions job to orchestrate the ingestion of the data that the analytics department will use into Amazon Redshift Serverless."
     ],
     "answer": "A",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A company stores details about transactions in an Amazon S3 bucket. The company wants to log all writes to the S3 bucket into another S3 bucket that is in the same AWS Region.\nWhich solution will meet this requirement with the LEAST operational effort?",
     "options": [
       "Configure an S3 Event Notifications rule for all activities on the transactions S3 bucket to invoke an AWS Lambda function. Program the Lambda function to write the event to Amazon Kinesis Data Firehose. Configure Kinesis Data Firehose to write the event to the logs S3 bucket.",
+      "Create a trail of management events in AWS CloudTraiL. Configure the trail to receive data from the transactions S3 bucket. Specify an empty prefix and write-only events. Specify the logs S3 bucket as the destination bucket.",
       "Configure an S3 Event Notifications rule for all activities on the transactions S3 bucket to invoke an AWS Lambda function. Program the Lambda function to write the events to the logs S3 bucket.",
-      "Create a trail of data events in AWS CloudTraiL. Configure the trail to receive data from the transactions S3 bucket. Specify an empty prefix and write-only events. Specify the logs S3 bucket as the destination bucket.",
-      "Create a trail of management events in AWS CloudTraiL. Configure the trail to receive data from the transactions S3 bucket. Specify an empty prefix and write-only events. Specify the logs S3 bucket as the destination bucket."
+      "Create a trail of data events in AWS CloudTraiL. Configure the trail to receive data from the transactions S3 bucket. Specify an empty prefix and write-only events. Specify the logs S3 bucket as the destination bucket."
     ],
     "answer": "D",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "A data engineer needs to maintain a central metadata repository that users access through Amazon EMR and Amazon Athena queries. The repository needs to provide the schema and properties of many tables. Some of the metadata is stored in Apache Hive. The data engineer needs to import the metadata from Hive into the central metadata repository.\nWhich solution will meet these requirements with the LEAST development effort?",
     "options": [
       "Use Amazon EMR and Apache Ranger.",
+      "Use a Hive metastore on an EMR cluster.",
       "Use the AWS Glue Data Catalog.",
-      "Use a metastore on an Amazon RDS for MySQL DB instance.",
-      "Use a Hive metastore on an EMR cluster."
+      "Use a metastore on an Amazon RDS for MySQL DB instance."
     ],
     "answer": "C",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A company needs to build a data lake in AWS. The company must provide row-level data access and column-level data access to specific teams. The teams will access the data by using Amazon Athena, Amazon Redshift Spectrum, and Apache Hive from Amazon EMR.\nWhich solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "Use Amazon S3 for data lake storage. Use S3 access policies to restrict data access by rows and columns. Provide data access through Amazon S3.",
+      "Use Amazon S3 for data lake storage. Use Apache Ranger through Amazon EMR to restrict data access by rows and columns. Provide data access by using Apache Pig.",
       "Use Amazon Redshift for data lake storage. Use Redshift security policies to restrict data access by rows and columns. Provide data access by using Apache Spark and Amazon Athena federated queries.",
-      "Use Amazon S3 for data lake storage. Use AWS Lake Formation to restrict data access by rows and columns. Provide data access through AWS Lake Formation.",
-      "Use Amazon S3 for data lake storage. Use Apache Ranger through Amazon EMR to restrict data access by rows and columns. Provide data access by using Apache Pig."
+      "Use Amazon S3 for data lake storage. Use AWS Lake Formation to restrict data access by rows and columns. Provide data access through AWS Lake Formation."
     ],
     "answer": "D",
     "type": "single"
@@ -47,9 +47,9 @@
     "question": "A company created an extract, transform, and load (ETL) data pipeline in AWS Glue. A data engineer must crawl a table that is in Microsoft SQL Server. The data engineer needs to extract, transform, and load the output of the crawl to an Amazon S3 bucket. The data engineer also must orchestrate the data pipeline.\nWhich AWS service or feature will meet these requirements MOST cost-effectively?",
     "options": [
       "AWS Step Functions",
+      "AWS Glue workflows",
       "AWS Glue Studio",
-      "Amazon Managed Workflows for Apache Airflow (Amazon MWAA)",
-      "AWS Glue workflows"
+      "Amazon Managed Workflows for Apache Airflow (Amazon MWAA)"
     ],
     "answer": "B",
     "type": "single"
@@ -58,9 +58,9 @@
     "question": "An airline company is collecting metrics about flight activities for analytics. The company is conducting a proof of concept (POC) test to show how analytics can provide insights that the company can use to increase on-time departures.\nThe POC test uses objects in Amazon S3 that contain the metrics in .csv format. The POC test uses Amazon Athena to query the data. The data is partitioned in the S3 bucket by date.\nAs the amount of data increases, the company wants to optimize the storage solution to improve query performance.\nWhich combination of solutions will meet these requirements? (Choose two.)",
     "options": [
       "Add a randomized string to the beginning of the keys in Amazon S3 to get more throughput across partitions.",
+      "Use an S3 bucket that is in the same account that uses Athena to query the data.",
       "Use an S3 bucket that is in the same AWS Region where the company runs Athena queries.",
       "Preprocess the .csv data to JSON format by fetching only the document keys that the query requires.",
-      "Use an S3 bucket that is in the same account that uses Athena to query the data.",
       "Preprocess the .csv data to Apache Parquet format by fetching only the data blocks that are needed for predicates."
     ],
     "answer": [
@@ -73,9 +73,9 @@
     "question": "A company has used an Amazon Redshift table that is named Orders for 6 months. The company performs weekly updates and deletes on the table. The table has an interleaved sort key on a column that contains AWS Regions.\nThe company wants to reclaim disk space so that the company will not run out of storage space. The company also wants to analyze the sort key column.\nWhich Amazon Redshift command will meet these requirements?",
     "options": [
       "VACUUM FULL Orders",
+      "VACUUM DELETE ONLY Orders",
       "VACUUM REINDEX Orders",
-      "VACUUM SORT ONLY Orders",
-      "VACUUM DELETE ONLY Orders"
+      "VACUUM SORT ONLY Orders"
     ],
     "answer": "C",
     "type": "single"
@@ -84,9 +84,9 @@
     "question": "A manufacturing company wants to collect data from sensors. A data engineer needs to implement a solution that ingests sensor data in near real time.\nThe solution must store the data to a persistent data store. The solution must store the data in nested JSON format. The company must have the ability to query from the data store with a latency of less than 10 milliseconds.\nWhich solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "Use a self-hosted Apache Kafka cluster to capture the sensor data. Store the data in Amazon S3 for querying.",
+      "Use AWS Lambda to process the sensor data. Store the data in Amazon S3 for querying.",
       "Use Amazon Kinesis Data Streams to capture the sensor data. Store the data in Amazon DynamoDB for querying.",
-      "Use Amazon Simple Queue Service (Amazon SQS) to buffer incoming sensor data. Use AWS Glue to store the data in Amazon RDS for querying.",
-      "Use AWS Lambda to process the sensor data. Store the data in Amazon S3 for querying."
+      "Use Amazon Simple Queue Service (Amazon SQS) to buffer incoming sensor data. Use AWS Glue to store the data in Amazon RDS for querying."
     ],
     "answer": "C",
     "type": "single"

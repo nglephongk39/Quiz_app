@@ -3,9 +3,9 @@
     "question": "A data engineer is configuring an AWS Glue job to read data from an Amazon S3 bucket. The data engineer has set up the necessary AWS Glue connection details and an associated IAM role. However, when the data engineer attempts to run the AWS Glue job, the data engineer receives an error message that indicates that there are problems with the Amazon S3 VPC gateway endpoint.<br><br>The data engineer must resolve the error and connect the AWS Glue job to the S3 bucket.<br><br>Which solution will meet this requirement?",
     "options": [
       "Update the AWS Glue security group to allow inbound traffic from the Amazon S3 VPC gateway endpoint.",
+      "Configure an S3 bucket policy to explicitly grant the AWS Glue job permissions to access the S3 bucket.",
       "Review the AWS Glue job code to ensure that the AWS Glue connection details include a fully qualified domain name.",
-      "Verify that the VPC's route table includes inbound and outbound routes for the Amazon S3 VPC gateway endpoint.",
-      "Configure an S3 bucket policy to explicitly grant the AWS Glue job permissions to access the S3 bucket."
+      "Verify that the VPC's route table includes inbound and outbound routes for the Amazon S3 VPC gateway endpoint."
     ],
     "answer": "D",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A retail company has a customer data hub in an Amazon S3 bucket. Employees from many countries use the data hub to support company-wide analytics. A governance team must ensure that the company's data analysts can access data only for customers who are within the same country as the analysts.<br><br>Which solution will meet these requirements with the LEAST operational effort?",
     "options": [
       "Create a separate table for each country's customer data. Provide access to each analyst based on the country that the analyst serves.",
+      "Register the S3 bucket as a data lake location in AWS Lake Formation. Use the Lake Formation row-level security features to enforce the company's access policies.",
       "Move the data to AWS Regions that are close to the countries where the customers are. Provide access to each analyst based on the country that the analyst serves.",
-      "Load the data into Amazon Redshift. Create a view for each country. Create separate IAM roles for each country to provide access to data from each country. Assign the appropriate roles to the analysts.",
-      "Register the S3 bucket as a data lake location in AWS Lake Formation. Use the Lake Formation row-level security features to enforce the company's access policies."
+      "Load the data into Amazon Redshift. Create a view for each country. Create separate IAM roles for each country to provide access to data from each country. Assign the appropriate roles to the analysts."
     ],
     "answer": "B",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "A media company wants to improve a system that recommends media content to customer based on user behavior and preferences. To improve the recommendation system, the company needs to incorporate insights from third-party datasets into the company's existing analytics platform.<br><br>The company wants to minimize the effort and time required to incorporate third-party datasets.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "Use API calls to access and integrate third-party datasets from AWS Data Exchange.",
+      "Use API calls to access and integrate third-party datasets from AWS DataSync.",
       "Use Amazon Kinesis Data Streams to access and integrate third-party datasets from AWS CodeCommit repositories.",
-      "Use Amazon Kinesis Data Streams to access and integrate third-party datasets from Amazon Elastic Container Registry (Amazon ECR).",
-      "Use API calls to access and integrate third-party datasets from AWS DataSync."
+      "Use Amazon Kinesis Data Streams to access and integrate third-party datasets from Amazon Elastic Container Registry (Amazon ECR)."
     ],
     "answer": "A",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A financial company wants to implement a data mesh. The data mesh must support centralized data governance, data analysis, and data access control. The company has decided to use AWS Glue for data catalogs and extract, transform, and load (ETL) operations.<br><br>Which combination of AWS services will implement a data mesh? (Choose two.)",
     "options": [
       "Use Amazon Aurora for data storage. Use an Amazon Redshift provisioned cluster for data analysis.",
+      "Use Amazon S3 for data storage. Use Amazon Athena for data analysis.",
       "Use AWS Glue DataBrew for centralized data governance and access control.",
       "Use Amazon RDS for data storage. Use Amazon EMR for data analysis.",
-      "Use Amazon S3 for data storage. Use Amazon Athena for data analysis.",
       "Use AWS Lake Formation for centralized data governance and access control."
     ],
     "answer": [
@@ -51,9 +51,9 @@
     "question": "A data engineer maintains custom Python scripts that perform a data formatting process that many AWS Lambda functions use. When the data engineer needs to modify the Python scripts, the data engineer must manually update all the Lambda functions.<br><br>The data engineer requires a less manual way to update the Lambda functions.<br><br>Which solution will meet this requirement?",
     "options": [
       "Store a pointer to the custom Python scripts in the execution context object in a shared Amazon S3 bucket.",
+      "Package the custom Python scripts into Lambda layers. Apply the Lambda layers to the Lambda functions.",
       "Store a pointer to the custom Python scripts in environment variables in a shared Amazon S3 bucket.",
-      "Assign the same alias to each Lambda function. Call reach Lambda function by specifying the function's alias.",
-      "Package the custom Python scripts into Lambda layers. Apply the Lambda layers to the Lambda functions."
+      "Assign the same alias to each Lambda function. Call reach Lambda function by specifying the function's alias."
     ],
     "answer": "B",
     "type": "single"
@@ -62,9 +62,9 @@
     "question": "A data engineer is building a data orchestration workflow. The data engineer plans to use a hybrid model that includes some on-premises resources and some resources that are in the cloud. The data engineer wants to prioritize portability and open source resources.<br><br>Which service should the data engineer use in both the on-premises environment and the cloud-based environment?",
     "options": [
       "AWS Data Exchange",
+      "Amazon Simple Workflow Service (Amazon SWF)",
       "Amazon Managed Workflows for Apache Airflow (Amazon MWAA)",
-      "AWS Glue",
-      "Amazon Simple Workflow Service (Amazon SWF)"
+      "AWS Glue"
     ],
     "answer": "C",
     "type": "single"
@@ -73,9 +73,9 @@
     "question": "A gaming company uses a NoSQL database to store customer information. The company is planning to migrate to AWS.<br><br>The company needs a fully managed AWS solution that will handle high online transaction processing (OLTP) workload, provide single-digit millisecond performance, and provide high availability around the world.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "Amazon Keyspaces (for Apache Cassandra)",
+      "Amazon DocumentDB (with MongoDB compatibility)",
       "Amazon DynamoDB",
-      "Amazon Timestream",
-      "Amazon DocumentDB (with MongoDB compatibility)"
+      "Amazon Timestream"
     ],
     "answer": "C",
     "type": "single"
@@ -84,9 +84,9 @@
     "question": "A data engineer creates an AWS Lambda function that an Amazon EventBridge event will invoke. When the data engineer tries to invoke the Lambda function by using an EventBridge event, an AccessDeniedException message appears.<br><br>How should the data engineer resolve the exception?",
     "options": [
       "Ensure that the trust policy of the Lambda function execution role allows EventBridge to assume the execution role.",
+      "Ensure that both the IAM role that EventBridge uses and the Lambda function's resource-based policy have the necessary permissions.",
       "Ensure that the subnet where the Lambda function is deployed is configured to be a private subnet.",
-      "Ensure that EventBridge schemas are valid and that the event mapping configuration is correct.",
-      "Ensure that both the IAM role that EventBridge uses and the Lambda function's resource-based policy have the necessary permissions."
+      "Ensure that EventBridge schemas are valid and that the event mapping configuration is correct."
     ],
     "answer": "B",
     "type": "single"
@@ -95,9 +95,9 @@
     "question": "A company uses a data lake that is based on an Amazon S3 bucket. To comply with regulations, the company must apply two layers of server-side encryption to files that are uploaded to the S3 bucket. The company wants to use an AWS Lambda function to apply the necessary encryption.<br><br>Which solution will meet these requirements?",
     "options": [
       "Use both server-side encryption with AWS KMS keys (SSE-KMS) and the Amazon S3 Encryption Client.",
+      "Use dual-layer server-side encryption with AWS KMS keys (DSSE-KMS).",
       "Use server-side encryption with customer-provided keys (SSE-C) before files are uploaded.",
-      "Use server-side encryption with AWS KMS keys (SSE-KMS).",
-      "Use dual-layer server-side encryption with AWS KMS keys (DSSE-KMS)."
+      "Use server-side encryption with AWS KMS keys (SSE-KMS)."
     ],
     "answer": "B",
     "type": "single"
@@ -106,9 +106,9 @@
     "question": "A finance company receives data from third-party data providers and stores the data as objects in an Amazon S3 bucket.<br><br>The company ran an AWS Glue crawler on the objects to create a data catalog. The AWS Glue crawler created multiple tables. However, the company expected that the crawler would create only one table.<br><br>The company needs a solution that will ensure the AVS Glue crawler creates only one table.<br><br>Which combination of solutions will meet this requirement? (Choose two.)",
     "options": [
       "Ensure that the object format, compression type, and schema are the same for each object.",
+      "Ensure that the object format and schema are the same for each object. Do not enforce consistency for the compression type of each object.",
       "Ensure that the schema is the same for each object. Do not enforce consistency for the file format and compression type of each object.",
       "Ensure that the structure of the prefix for each S3 object name is consistent.",
-      "Ensure that the object format and schema are the same for each object. Do not enforce consistency for the compression type of each object.",
       "Ensure that all S3 object names follow a similar pattern."
     ],
     "answer": [

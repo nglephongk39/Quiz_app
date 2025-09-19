@@ -3,9 +3,9 @@
     "question": "A company stores its processed data in an S3 bucket. The company has a strict data access policy. The company uses IAM roles to grant teams within the company different levels of access to the S3 bucket.<br><br>The company wants to receive notifications when a user violates the data access policy. Each notification must include the username of the user who violated the policy.<br><br>Which solution will meet these requirements?",
     "options": [
       "Use AWS Config rules to detect violations of the data access policy. Set up compliance alarms.",
+      "Use Amazon CloudWatch metrics to gather object-level metrics. Set up CloudWatch alarms.",
       "Use AWS CloudTrail to track object-level events for the S3 bucket. Forward events to Amazon CloudWatch to set up CloudWatch alarms.",
-      "Use Amazon S3 server access logs to monitor access to the bucket. Forward the access logs to an Amazon CloudWatch log group. Use metric filters on the log group to set up CloudWatch alarms.",
-      "Use Amazon CloudWatch metrics to gather object-level metrics. Set up CloudWatch alarms."
+      "Use Amazon S3 server access logs to monitor access to the bucket. Forward the access logs to an Amazon CloudWatch log group. Use metric filters on the log group to set up CloudWatch alarms."
     ],
     "answer": "C",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A company needs to load customer data that comes from a third party into an Amazon Redshift data warehouse. The company stores order data and product data in the same data warehouse. The company wants to use the combined dataset to identify potential new customers.<br><br>A data engineer notices that one of the fields in the source data includes values that are in JSON format.<br><br>How should the data engineer load the JSON data into the data warehouse with the LEAST effort?",
     "options": [
       "Use the SUPER data type to store the data in the Amazon Redshift table.",
+      "Use AWS Glue to flatten the JSON data and ingest it into the Amazon Redshift table.",
       "Use Amazon S3 to store the JSON data. Use Amazon Athena to query the data.",
-      "Use an AWS Lambda function to flatten the JSON data. Store the data in Amazon S3.",
-      "Use AWS Glue to flatten the JSON data and ingest it into the Amazon Redshift table."
+      "Use an AWS Lambda function to flatten the JSON data. Store the data in Amazon S3."
     ],
     "answer": "A",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "A company wants to analyze sales records that the company stores in a MySQL database. The company wants to correlate the records with sales opportunities identified by Salesforce.<br><br>The company receives 2 GB of sales records every day. The company has 100 GB of identified sales opportunities. A data engineer needs to develop a process that will analyze and correlate sales records and sales opportunities. The process must run once each night.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "Use Amazon Managed Workflows for Apache Airflow (Amazon MWAA) to fetch both datasets. Use AWS Lambda functions to correlate the datasets. Use AWS Step Functions to orchestrate the process.",
+      "Use Amazon AppFlow to fetch sales opportunities from Salesforce. Use AWS Glue to fetch sales records from the MySQL database. Correlate the sales records with the sales opportunities. Use Amazon Managed Workflows for Apache Airflow (Amazon MWAA) to orchestrate the process.",
       "Use Amazon AppFlow to fetch sales opportunities from Salesforce. Use AWS Glue to fetch sales records from the MySQL database. Correlate the sales records with sales opportunities. Use AWS Step Functions to orchestrate the process.",
-      "Use Amazon AppFlow to fetch sales opportunities from Salesforce. Use Amazon Kinesis Data Streams to fetch sales records from the MySQL database. Use Amazon Managed Service for Apache Flink to correlate the datasets. Use AWS Step Functions to orchestrate the process.",
-      "Use Amazon AppFlow to fetch sales opportunities from Salesforce. Use AWS Glue to fetch sales records from the MySQL database. Correlate the sales records with the sales opportunities. Use Amazon Managed Workflows for Apache Airflow (Amazon MWAA) to orchestrate the process."
+      "Use Amazon AppFlow to fetch sales opportunities from Salesforce. Use Amazon Kinesis Data Streams to fetch sales records from the MySQL database. Use Amazon Managed Service for Apache Flink to correlate the datasets. Use AWS Step Functions to orchestrate the process."
     ],
     "answer": "C",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A company stores server logs in an Amazon S3 bucket. The company needs to keep the logs for 1 year. The logs are not required after 1 year.<br><br>A data engineer needs a solution to automatically delete logs that are older than 1 year.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "Define an S3 Lifecycle configuration to delete the logs after 1 year.",
+      "Create an AWS Lambda function to delete the logs after 1 year.",
       "Schedule a cron job on an Amazon EC2 instance to delete the logs after 1 year.",
-      "Configure an AWS Step Functions state machine to delete the logs after 1 year.",
-      "Create an AWS Lambda function to delete the logs after 1 year."
+      "Configure an AWS Step Functions state machine to delete the logs after 1 year."
     ],
     "answer": "A",
     "type": "single"
@@ -47,9 +47,9 @@
     "question": "A company is designing a serverless data processing workflow in AWS Step Functions that involves multiple steps. The processing workflow ingests data from an external API, transforms the data by using multiple AWS Lambda functions, and loads the transformed data into Amazon DynamoDB.<br><br>The company needs the workflow to perform specific steps based on the content of the incoming data.<br><br>Which Step Functions state type should the company use to meet this requirement?",
     "options": [
       "Parallel",
+      "Choice",
       "Task",
-      "Map",
-      "Choice"
+      "Map"
     ],
     "answer": "B",
     "type": "single"
@@ -58,9 +58,9 @@
     "question": "A data engineer created a table named cloudtrail_logs in Amazon Athena to query AWS CloudTrail logs and prepare data for audits. The data engineer needs to write a query to display errors with error codes that have occurred since the beginning of 2024. The query must return the 10 most recent errors.<br><br>Which query will meet these requirements?",
     "options": [
       "select count (*) as TotalEvents, eventname, errorcode, errormessage from cloudtrail_logswhere errorcode is not nulland eventtime >= '2024-01-01T00:00:00Z' group by eventname, errorcode, errormessageorder by TotalEvents desclimit 10;",
+      "select count (*) as TotalEvents, eventname, errorcode, errormessage from cloudtrail_logs where eventtime >= '2024-01-01T00:00:00Z' group by eventname, errorcode, errormessage order by TotalEvents desc limit 10;",
       "select count (*) as TotalEvents, eventname, errorcode, errormessage from cloudtrail_logswhere eventtime >= '2024-01-01T00:00:00Z' group by eventname, errorcode, errormessageorder by eventname asc limit 10;",
-      "select count (*) as TotalEvents, eventname, errorcode, errormessage from cloudtrail_logs where errorcode is not nulland eventtime >= '2024-01-01T00:00:00Z' group by eventname, errorcode, errormessagelimit 10;",
-      "select count (*) as TotalEvents, eventname, errorcode, errormessage from cloudtrail_logs where eventtime >= '2024-01-01T00:00:00Z' group by eventname, errorcode, errormessage order by TotalEvents desc limit 10;"
+      "select count (*) as TotalEvents, eventname, errorcode, errormessage from cloudtrail_logs where errorcode is not nulland eventtime >= '2024-01-01T00:00:00Z' group by eventname, errorcode, errormessagelimit 10;"
     ],
     "answer": "A",
     "type": "single"
@@ -69,9 +69,9 @@
     "question": "An online retailer uses multiple delivery partners to deliver products to customers. The delivery partners send order summaries to the retailer. The retailer stores the order summaries in Amazon S3.<br><br>Some of the order summaries contain personally identifiable information (PII) about customers. A data engineer needs to detect PII in the order summaries so the company can redact the PII.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "Amazon Textract",
+      "Amazon S3 Storage Lens",
       "Amazon Macie",
-      "Amazon SageMaker Data Wrangler",
-      "Amazon S3 Storage Lens"
+      "Amazon SageMaker Data Wrangler"
     ],
     "answer": "C",
     "type": "single"
@@ -80,9 +80,9 @@
     "question": "A retail company has a customer data hub in an Amazon S3 bucket. Employees from many countries use the data hub to support company-wide analytics. A governance team must ensure that the company's data analysts can access data only for customers who are within the same country as the analysts.\nWhich solution will meet these requirements with the LEAST operational effort?",
     "options": [
       "Create a separate table for each country's customer data. Provide access to each analyst based on the country that the analyst serves.",
+      "Register the S3 bucket as a data lake location in AWS Lake Formation. Use the Lake Formation row-level security features to enforce the company's access policies.",
       "Move the data to AWS Regions that are close to the countries where the customers are. Provide access to each analyst based on the country that the analyst serves.",
-      "Load the data into Amazon Redshift. Create a view for each country. Create separate IAM roles for each country to provide access to data from each country. Assign the appropriate roles to the analysts.",
-      "Register the S3 bucket as a data lake location in AWS Lake Formation. Use the Lake Formation row-level security features to enforce the company's access policies."
+      "Load the data into Amazon Redshift. Create a view for each country. Create separate IAM roles for each country to provide access to data from each country. Assign the appropriate roles to the analysts."
     ],
     "answer": "B",
     "type": "single"
@@ -91,9 +91,9 @@
     "question": "A company is building an analytics solution. The solution uses Amazon S3 for data lake storage and Amazon Redshift for a data warehouse. The company wants to use Amazon Redshift Spectrum to query the data that is in Amazon S3.\nWhich actions will provide the FASTEST queries? (Choose two.)",
     "options": [
       "Use gzip compression to compress individual files to sizes that are between 1 GB and 5 GB.",
+      "Use a columnar storage file format.",
       "Partition the data based on the most common query predicates.",
       "Split the data into files that are less than 10 KB.",
-      "Use a columnar storage file format.",
       "Use file formats that are not splittable."
     ],
     "answer": [

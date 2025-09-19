@@ -3,9 +3,9 @@
     "question": "A company has a data lake in Amazon S3. The company uses AWS Glue to catalog data and AWS Glue Studio to implement data extract, transform, and load (ETL) pipelines.<br><br>The company needs to ensure that data quality issues are checked every time the pipelines run. A data engineer must enhance the existing pipelines to evaluate data quality rules based on predefined thresholds.<br><br>Which solution will meet these requirements with the LEAST implementation effort?",
     "options": [
       "Add a new transform that is defined by a SQL query to each Glue ETL job. Use the SQL query to implement a ruleset that includes the data quality rules that need to be evaluated.",
+      "Add a new Evaluate Data Quality transform to each Glue ETL job. Use Data Quality Definition Language (DQDL) to implement a ruleset that includes the data quality rules that need to be evaluated.",
       "Add a new custom transform to each Glue ETL job. Use the PyDeequ library to implement a ruleset that includes the data quality rules that need to be evaluated.",
-      "Add a new custom transform to each Glue ETL job. Use the Great Expectations library to implement a ruleset that includes the data quality rules that need to be evaluated.",
-      "Add a new Evaluate Data Quality transform to each Glue ETL job. Use Data Quality Definition Language (DQDL) to implement a ruleset that includes the data quality rules that need to be evaluated."
+      "Add a new custom transform to each Glue ETL job. Use the Great Expectations library to implement a ruleset that includes the data quality rules that need to be evaluated."
     ],
     "answer": "B",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A company uses an on-premises Microsoft SQL Server database to store financial transaction data. The company migrates the transaction data from the on-premises database to AWS at the end of each month. The company has noticed that the cost to migrate data from the on-premises database to an Amazon RDS for SQL Server database has increased recently.\nThe company requires a cost-effective solution to migrate the data to AWS. The solution must cause minimal downtown for the applications that access the database.\nWhich AWS service should the company use to meet these requirements?",
     "options": [
       "AWS Lambda",
+      "AWS Database Migration Service (AWS DMS)",
       "AWS Direct Connect",
-      "AWS DataSync",
-      "AWS Database Migration Service (AWS DMS)"
+      "AWS DataSync"
     ],
     "answer": "B",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "A company has a gaming application that stores data in Amazon DynamoDB tables. A data engineer needs to ingest the game data into an Amazon OpenSearch Service cluster. Data updates must occur in near real time.<br><br>Which solution will meet these requirements?",
     "options": [
       "Use AWS Step Functions to periodically export data from the Amazon DynamoDB tables to an Amazon S3 bucket. Use an AWS Lambda function to load the data into Amazon OpenSearch Service.",
+      "Configure an AWS Glue job to have a source of Amazon DynamoDB and a destination of Amazon OpenSearch Service to transfer data in near real time.",
       "Use Amazon DynamoDB Streams to capture table changes. Use an AWS Lambda function to process and update the data in Amazon OpenSearch Service.",
-      "Use a custom OpenSearch plugin to sync data from the Amazon DynamoDB tables.",
-      "Configure an AWS Glue job to have a source of Amazon DynamoDB and a destination of Amazon OpenSearch Service to transfer data in near real time."
+      "Use a custom OpenSearch plugin to sync data from the Amazon DynamoDB tables."
     ],
     "answer": "C",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A company uses Amazon Redshift as its data warehouse service. A data engineer needs to design a physical data model.<br><br>The data engineer encounters a de-normalized table that is growing in size. The table does not have a suitable column to use as the distribution key.<br><br>Which distribution style should the data engineer use to meet these requirements with the LEAST maintenance overhead?",
     "options": [
       "ALL distribution",
+      "EVEN distribution",
       "AUTO distribution",
-      "KEY distribution",
-      "EVEN distribution"
+      "KEY distribution"
     ],
     "answer": "C",
     "type": "single"
@@ -47,9 +47,9 @@
     "question": "A retail company is expanding its operations globally. The company needs to use Amazon QuickSight to accurately calculate currency exchange rates for financial reports. The company has an existing dashboard that includes a visual that is based on an analysis of a dataset that contains global currency values and exchange rates.<br><br>A data engineer needs to ensure that exchange rates are calculated with a precision of four decimal places. The calculations must be precomputed. The data engineer must materialize results in QuickSight super-fast, parallel, in-memory calculation engine (SPICE).<br><br>Which solution will meet these requirements?",
     "options": [
       "Define and create the calculated field in the dataset.",
+      "Define and create the calculated field in the analysis.",
       "Define and create the calculated field in the visual.",
-      "Define and create the calculated field in the dashboard.",
-      "Define and create the calculated field in the analysis."
+      "Define and create the calculated field in the dashboard."
     ],
     "answer": "A",
     "type": "single"
@@ -58,9 +58,9 @@
     "question": "A company has three subsidiaries. Each subsidiary uses a different data warehousing solution. The first subsidiary hosts its data warehouse in Amazon Redshift. The second subsidiary uses Teradata Vantage on AWS. The third subsidiary uses Google BigQuery.<br><br>The company wants to aggregate all the data into a central Amazon S3 data lake. The company wants to use Apache Iceberg as the table format.<br><br>A data engineer needs to build a new pipeline to connect to all the data sources, run transformations by using each source engine, join the data, and write the data to Iceberg.<br><br>Which solution will meet these requirements with the LEAST operational effort?",
     "options": [
       "Use native Amazon Redshift, Teradata, and BigQuery connectors to build the pipeline in AWS Glue. Use native AWS Glue transforms to join the data. Run a Merge operation on the data lake Iceberg table.",
+      "Use the Amazon Athena federated query connectors for Amazon Redshift, Teradata, and BigQuery to build the pipeline in Athena. Write a SQL query to read from all the data sources, join the data, and run a Merge operation on the data lake Iceberg table.",
       "Use the native Amazon Redshift connector, the Java Database Connectivity (JDBC) connector for Teradata, and the open source Apache Spark BigQuery connector to build the pipeline in Amazon EMR. Write code in PySpark to join the data. Run a Merge operation on the data lake Iceberg table.",
-      "Use the native Amazon Redshift, Teradata, and BigQuery connectors in Amazon Appflow to write data to Amazon S3 and AWS Glue Data Catalog. Use Amazon Athena to join the data. Run a Merge operation on the data lake Iceberg table.",
-      "Use the Amazon Athena federated query connectors for Amazon Redshift, Teradata, and BigQuery to build the pipeline in Athena. Write a SQL query to read from all the data sources, join the data, and run a Merge operation on the data lake Iceberg table."
+      "Use the native Amazon Redshift, Teradata, and BigQuery connectors in Amazon Appflow to write data to Amazon S3 and AWS Glue Data Catalog. Use Amazon Athena to join the data. Run a Merge operation on the data lake Iceberg table."
     ],
     "answer": "B",
     "type": "single"
@@ -69,9 +69,9 @@
     "question": "A company is building a data stream processing application. The application runs in an Amazon Elastic Kubernetes Service (Amazon EKS) cluster. The application stores processed data in an Amazon DynamoDB table.<br><br>The company needs the application containers in the EKS cluster to have secure access to the DynamoDB table. The company does not want to embed AWS credentials in the containers.<br><br>Which solution will meet these requirements?",
     "options": [
       "Store the AWS credentials in an Amazon S3 bucket. Grant the EKS containers access to the S3 bucket to retrieve the credentials.",
+      "Attach an IAM role to the EKS worker nodes, Grant the IAM role access to DynamoDUse the IAM role to set up IAM roles service accounts (IRSA) functionality.",
       "Create an IAM user that has an access key to access the DynamoDB table. Use environment variables in the EKS containers to store the IAM user access key data.",
-      "Create an IAM user that has an access key to access the DynamoDB table. Use Kubernetes secrets that are mounted in a volume of the EKS duster nodes to store the user access key data.",
-      "Attach an IAM role to the EKS worker nodes, Grant the IAM role access to DynamoDUse the IAM role to set up IAM roles service accounts (IRSA) functionality."
+      "Create an IAM user that has an access key to access the DynamoDB table. Use Kubernetes secrets that are mounted in a volume of the EKS duster nodes to store the user access key data."
     ],
     "answer": "B",
     "type": "single"
@@ -80,9 +80,9 @@
     "question": "A data engineer needs to onboard a new data producer into AWS. The data producer needs to migrate data products to AWS.<br><br>The data producer maintains many data pipelines that support a business application. Each pipeline must have service accounts and their corresponding credentials. The data engineer must establish a secure connection from the data producer's on-premises data center to AWS. The data engineer must not use the public internet to transfer data from an on-premises data center to AWS.<br><br>Which solution will meet these requirements?",
     "options": [
       "Instruct the new data producer to create Amazon Machine Images (AMIs) on Amazon Elastic Container Service (Amazon ECS) to store the code base of the application. Create security groups in a public subnet that allow connections only to the on-premises data center.",
+      "Create an AWS Direct Connect connection to the on-premises data center. Store the service account credentials in AWS Secrets manager.",
       "Create a security group in a public subnet. Configure the security group to allow only connections from the CIDR blocks that correspond to the data producer. Create Amazon S3 buckets than contain presigned URLS that have one-day expiration dates.",
-      "Create an AWS Direct Connect connection to the on-premises data center. Store the application keys in AWS Secrets Manager. Create Amazon S3 buckets that contain presigned URLS that have one-day expiration dates.",
-      "Create an AWS Direct Connect connection to the on-premises data center. Store the service account credentials in AWS Secrets manager."
+      "Create an AWS Direct Connect connection to the on-premises data center. Store the application keys in AWS Secrets Manager. Create Amazon S3 buckets that contain presigned URLS that have one-day expiration dates."
     ],
     "answer": "B",
     "type": "single"
@@ -91,9 +91,9 @@
     "question": "A company has a data lake in Amazon S3. The company collects AWS CloudTrail logs for multiple applications. The company stores the logs in the data lake, catalogs the logs in AWS Glue, and partitions the logs based on the year. The company uses Amazon Athena to analyze the logs.<br><br>Recently, customers reported that a query on one of the Athena tables did not return any data. A data engineer must resolve the issue.<br><br>Which combination of troubleshooting steps should the data engineer take? (Choose two.)",
     "options": [
       "Confirm that Athena is pointing to the correct Amazon S3 location.",
+      "Increase the query timeout duration.",
       "Use the MSCK REPAIR TABLE command.",
       "Restart Athena.",
-      "Increase the query timeout duration.",
       "Delete and recreate the problematic Athena table."
     ],
     "answer": [

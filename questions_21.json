@@ -3,9 +3,9 @@
     "question": "During a security review, a company identified a vulnerability in an AWS Glue job. The company discovered that credentials to access an Amazon Redshift cluster were hard coded in the job script.\nA data engineer must remediate the security vulnerability in the AWS Glue job. The solution must securely store the credentials.\nWhich combination of steps should the data engineer take to meet these requirements? (Choose two.)",
     "options": [
       "Store the credentials in the AWS Glue job parameters.",
+      "Store the credentials in a configuration file that is in an Amazon S3 bucket.",
       "Access the credentials from a configuration file that is in an Amazon S3 bucket by using the AWS Glue job.",
       "Store the credentials in AWS Secrets Manager.",
-      "Store the credentials in a configuration file that is in an Amazon S3 bucket.",
       "Grant the AWS Glue job IAM role access to the stored credentials."
     ],
     "answer": [
@@ -18,9 +18,9 @@
     "question": "A company uses Amazon Athena for one-time queries against data that is in Amazon S3. The company has several use cases. The company must implement permission controls to separate query processes and access to query history among users, teams, and applications that are in the same AWS account.\nWhich solution will meet these requirements?",
     "options": [
       "Create an S3 bucket for each use case. Create an S3 bucket policy that grants permissions to appropriate individual IAM users. Apply the S3 bucket policy to the S3 bucket.",
+      "Create an Athena workgroup for each use case. Apply tags to the workgroup. Create an IAM policy that uses the tags to apply appropriate permissions to the workgroup.",
       "Create an IAM role for each use case. Assign appropriate permissions to the role for each use case. Associate the role with Athena.",
-      "Create an AWS Glue Data Catalog resource policy that grants permissions to appropriate individual IAM users for each use case. Apply the resource policy to the specific tables that Athena uses.",
-      "Create an Athena workgroup for each use case. Apply tags to the workgroup. Create an IAM policy that uses the tags to apply appropriate permissions to the workgroup."
+      "Create an AWS Glue Data Catalog resource policy that grants permissions to appropriate individual IAM users for each use case. Apply the resource policy to the specific tables that Athena uses."
     ],
     "answer": "B",
     "type": "single"
@@ -29,9 +29,9 @@
     "question": "A data engineer needs to build an extract, transform, and load (ETL) job. The ETL job will process daily incoming .csv files that users upload to an Amazon S3 bucket. The size of each S3 object is less than 100 MB.\nWhich solution will meet these requirements MOST cost-effectively?",
     "options": [
       "Write a custom Python application. Host the application on an Amazon Elastic Kubernetes Service (Amazon EKS) cluster.",
+      "Write a PySpark ETL script. Host the script on an Amazon EMR cluster.",
       "Write an AWS Glue PySpark job. Use Apache Spark to transform the data.",
-      "Write an AWS Glue Python shell job. Use pandas to transform the data.",
-      "Write a PySpark ETL script. Host the script on an Amazon EMR cluster."
+      "Write an AWS Glue Python shell job. Use pandas to transform the data."
     ],
     "answer": "D",
     "type": "single"
@@ -40,9 +40,9 @@
     "question": "A data engineer creates an AWS Glue Data Catalog table by using an AWS Glue crawler that is named Orders. The data engineer wants to add the following new partitions:<br><br>s3://transactions/orders/order_date=2023-01-01\ns3://transactions/orders/order_date=2023-01-02<br><br>The data engineer must edit the metadata to include the new partitions in the table without scanning all the folders and files in the location of the table.<br><br>Which data definition language (DDL) statement should the data engineer use in Amazon Athena?",
     "options": [
       "ALTER TABLE Orders ADD PARTITION(order_date=’2023-01-01’) LOCATION ‘s3://transactions/orders/order_date=2023-01-01’;\nALTER TABLE Orders ADD PARTITION(order_date=’2023-01-02’) LOCATION ‘s3://transactions/orders/order_date=2023-01-02’;",
+      "MSCK REPAIR TABLE Orders;",
       "REPAIR TABLE Orders;",
-      "ALTER TABLE Orders MODIFY PARTITION(order_date=’2023-01-01’) LOCATION ‘s3://transactions/orders/2023-01-01’;\nALTER TABLE Orders MODIFY PARTITION(order_date=’2023-01-02’) LOCATION ‘s3://transactions/orders/2023-01-02’;",
-      "MSCK REPAIR TABLE Orders;"
+      "ALTER TABLE Orders MODIFY PARTITION(order_date=’2023-01-01’) LOCATION ‘s3://transactions/orders/2023-01-01’;\nALTER TABLE Orders MODIFY PARTITION(order_date=’2023-01-02’) LOCATION ‘s3://transactions/orders/2023-01-02’;"
     ],
     "answer": "A",
     "type": "single"
@@ -51,9 +51,9 @@
     "question": "A company stores 10 to 15 TB of uncompressed .csv files in Amazon S3. The company is evaluating Amazon Athena as a one-time query engine.<br><br>The company wants to transform the data to optimize query runtime and storage costs.<br><br>Which file format and compression solution will meet these requirements for Athena queries?",
     "options": [
       ".csv format compressed with zip",
+      "JSON format compressed with bzip2",
       "Apache Parquet format compressed with Snappy",
-      "Apache Avro format compressed with LZO",
-      "JSON format compressed with bzip2"
+      "Apache Avro format compressed with LZO"
     ],
     "answer": "C",
     "type": "single"
@@ -62,9 +62,9 @@
     "question": "A company uses Apache Airflow to orchestrate the company's current on-premises data pipelines. The company runs SQL data quality check tasks as part of the pipelines. The company wants to migrate the pipelines to AWS and to use AWS managed services.<br><br>Which solution will meet these requirements with the LEAST amount of refactoring?",
     "options": [
       "Setup AWS Outposts in the AWS Region that is nearest to the location where the company uses Airflow. Migrate the servers into Outposts hosted Amazon EC2 instances. Update the pipelines to interact with the Outposts hosted EC2 instances instead of the on-premises pipelines.",
+      "Create a custom Amazon Machine Image (AMI) that contains the Airflow application and the code that the company needs to migrate. Use the custom AMI to deploy Amazon EC2 instances. Update the network connections to interact with the newly deployed EC2 instances.",
       "Migrate the existing Airflow orchestration configuration into Amazon Managed Workflows for Apache Airflow (Amazon MWAA). Create the data quality checks during the ingestion to validate the data quality by using SQL tasks in Airflow.",
-      "Convert the pipelines to AWS Step Functions workflows. Recreate the data quality checks in SQL as Python based AWS Lambda functions.",
-      "Create a custom Amazon Machine Image (AMI) that contains the Airflow application and the code that the company needs to migrate. Use the custom AMI to deploy Amazon EC2 instances. Update the network connections to interact with the newly deployed EC2 instances."
+      "Convert the pipelines to AWS Step Functions workflows. Recreate the data quality checks in SQL as Python based AWS Lambda functions."
     ],
     "answer": "C",
     "type": "single"
@@ -73,9 +73,9 @@
     "question": "A company uses Amazon EMR as an extract, transform, and load (ETL) pipeline to transform data that comes from multiple sources. A data engineer must orchestrate the pipeline to maximize performance.<br><br>Which AWS service will meet this requirement MOST cost effectively?",
     "options": [
       "Amazon EventBridge",
+      "Amazon Managed Workflows for Apache Airflow (Amazon MWAA)",
       "AWS Step Functions",
-      "AWS Glue Workflows",
-      "Amazon Managed Workflows for Apache Airflow (Amazon MWAA)"
+      "AWS Glue Workflows"
     ],
     "answer": "C",
     "type": "single"
@@ -84,9 +84,9 @@
     "question": "An online retail company stores Application Load Balancer (ALB) access logs in an Amazon S3 bucket. The company wants to use Amazon Athena to query the logs to analyze traffic patterns.<br><br>A data engineer creates an unpartitioned table in Athena. As the amount of the data gradually increases, the response time for queries also increases. The data engineer wants to improve the query performance in Athena.<br><br>Which solution will meet these requirements with the LEAST operational effort?",
     "options": [
       "Create an AWS Glue job that determines the schema of all ALB access logs and writes the partition metadata to AWS Glue Data Catalog.",
+      "Create an AWS Glue crawler that includes a classifier that determines the schema of all ALB access logs and writes the partition metadata to AWS Glue Data Catalog.",
       "Create an AWS Lambda function to transform all ALB access logs. Save the results to Amazon S3 in Apache Parquet format. Partition the metadata. Use Athena to query the transformed data.",
-      "Use Apache Hive to create bucketed tables. Use an AWS Lambda function to transform all ALB access logs.",
-      "Create an AWS Glue crawler that includes a classifier that determines the schema of all ALB access logs and writes the partition metadata to AWS Glue Data Catalog."
+      "Use Apache Hive to create bucketed tables. Use an AWS Lambda function to transform all ALB access logs."
     ],
     "answer": "B",
     "type": "single"

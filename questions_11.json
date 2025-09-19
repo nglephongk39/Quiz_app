@@ -3,9 +3,9 @@
     "question": "A company uses Amazon Redshift as its data warehouse. Data encoding is applied to the existing tables of the data warehouse. A data engineer discovers that the compression encoding applied to some of the tables is not the best fit for the data.<br><br>The data engineer needs to improve the data encoding for the tables that have sub-optimal encoding.<br><br>Which solution will meet this requirement?",
     "options": [
       "Run the ANALYZE command against the identified tables. Manually update the compression encoding of columns based on the output of the command.",
+      "Run the ANALYZE COMPRESSION command against the identified tables. Manually update the compression encoding of columns based on the output of the command.",
       "Run the VACUUM REINDEX command against the identified tables.",
-      "Run the VACUUM RECLUSTER command against the identified tables.",
-      "Run the ANALYZE COMPRESSION command against the identified tables. Manually update the compression encoding of columns based on the output of the command."
+      "Run the VACUUM RECLUSTER command against the identified tables."
     ],
     "answer": "B",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "The company stores a large volume of customer records in Amazon S3. To comply with regulations, the company must be able to access new customer records immediately for the first 30 days after the records are created. The company accesses records that are older than 30 days infrequently.<br><br>The company needs to cost-optimize its Amazon S3 storage.<br><br>Which solution will meet these requirements MOST cost-effectively?",
     "options": [
       "Apply a lifecycle policy to transition records to S3 Standard Infrequent-Access (S3 Standard-IA) storage after 30 days.",
+      "Use S3 Intelligent-Tiering storage.",
       "Transition records to S3 Glacier Deep Archive storage after 30 days.",
-      "Use S3 Standard-Infrequent Access (S3 Standard-IA) storage for all customer records.",
-      "Use S3 Intelligent-Tiering storage."
+      "Use S3 Standard-Infrequent Access (S3 Standard-IA) storage for all customer records."
     ],
     "answer": "A",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "A data engineer is using Amazon QuickSight to build a dashboard to report a company’s revenue in multiple AWS Regions. The data engineer wants the dashboard to display the total revenue for a Region, regardless of the drill-down levels shown in the visual.<br><br>Which solution will meet these requirements?",
     "options": [
       "Create a table calculation.",
+      "Create a simple calculated field.",
       "Create a level-aware calculation - aggregate (LAC-A) function.",
-      "Create a level-aware calculation - window (LAC-W) function.",
-      "Create a simple calculated field."
+      "Create a level-aware calculation - window (LAC-W) function."
     ],
     "answer": "C",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A retail company stores customer data in an Amazon S3 bucket. Some of the customer data contains personally identifiable information (PII) about customers. The company must not share PII data with business partners.<br><br>A data engineer must determine whether a dataset contains PII before making objects in the dataset available to business partners.<br><br>Which solution will meet this requirement with the LEAST manual intervention?",
     "options": [
       "Configure the S3 bucket and S3 objects to allow access to Amazon Macie. Use automated sensitive data discovery in Macie.",
+      "Configure AWS CloudTrail to monitor S3 PUT operations. Inspect the CloudTrail trails to identify operations that save PII.",
       "Create an AWS Lambda function to identify PII in S3 objects. Schedule the function to run periodically.",
-      "Create a table in AWS Glue Data Catalog. Write custom SQL queries to identify PII in the table. Use Amazon Athena to run the queries.",
-      "Configure AWS CloudTrail to monitor S3 PUT operations. Inspect the CloudTrail trails to identify operations that save PII."
+      "Create a table in AWS Glue Data Catalog. Write custom SQL queries to identify PII in the table. Use Amazon Athena to run the queries."
     ],
     "answer": "A",
     "type": "single"
@@ -47,9 +47,9 @@
     "question": "A data engineer needs to create an empty copy of an existing table in Amazon Athena to perform data processing tasks. The existing table in Athena contains 1,000 rows.<br><br>Which query will meet this requirement?",
     "options": [
       "CREATE TABLE new_table -\nLIKE old_table;",
+      "CREATE TABLE new_table -\nAS SELECT *\n\nFROM old_table -\nWITH NO DATA;",
       "CREATE TABLE new_table -\nAS SELECT *\nFROM old_table;",
-      "CREATE TABLE new_table -\nas SELECT *\n\nFROM old_cable -\nWHERE 1=1;",
-      "CREATE TABLE new_table -\nAS SELECT *\n\nFROM old_table -\nWITH NO DATA;"
+      "CREATE TABLE new_table -\nas SELECT *\n\nFROM old_cable -\nWHERE 1=1;"
     ],
     "answer": "B",
     "type": "single"
@@ -58,9 +58,9 @@
     "question": "A data engineer wants to orchestrate a set of extract, transform, and load (ETL) jobs that run on AWS. The ETL jobs contain tasks that must run Apache Spark jobs on Amazon EMR, make API calls to Salesforce, and load data into Amazon Redshift.<br><br>The ETL jobs need to handle failures and retries automatically. The data engineer needs to use Python to orchestrate the jobs.<br><br>Which service will meet these requirements?",
     "options": [
       "Amazon Managed Workflows for Apache Airflow (Amazon MWAA)",
+      "AWS Step Functions",
       "AWS Glue",
-      "Amazon EventBridge",
-      "AWS Step Functions"
+      "Amazon EventBridge"
     ],
     "answer": "A",
     "type": "single"
@@ -69,9 +69,9 @@
     "question": "A data engineer maintains custom Python scripts that perform a data formatting process that many AWS Lambda functions use. When the data engineer needs to modify the Python scripts, the data engineer must manually update all the Lambda functions.<br><br>The data engineer requires a less manual way to update the Lambda functions.<br><br>Which solution will meet this requirement?",
     "options": [
       "Store the custom Python scripts in a shared Amazon S3 bucket. Store a pointer to the custom scripts in the execution context object.",
+      "Package the custom Python scripts into Lambda layers. Apply the Lambda layers to the Lambda functions.",
       "Store the custom Python scripts in a shared Amazon S3 bucket. Store a pointer to the customer scripts in environment variables.",
-      "Assign the same alias to each Lambda function. Call each Lambda function by specifying the function's alias.",
-      "Package the custom Python scripts into Lambda layers. Apply the Lambda layers to the Lambda functions."
+      "Assign the same alias to each Lambda function. Call each Lambda function by specifying the function's alias."
     ],
     "answer": "B",
     "type": "single"
@@ -80,9 +80,9 @@
     "question": "A company stores customer data in an Amazon S3 bucket. Multiple teams in the company want to use the customer data for downstream analysis. The company needs to ensure that the teams do not have access to personally identifiable information (PII) about the customers.<br><br>Which solution will meet this requirement with LEAST operational overhead?",
     "options": [
       "Use Amazon Macie to create and run a sensitive data discovery job to detect and remove PII.",
+      "Use S3 Object Lambda to access the data, and use Amazon Comprehend to detect and remove PII.",
       "Use Amazon Data Firehose and Amazon Comprehend to detect and remove PII.",
-      "Use an AWS Glue DataBrew job to store the PII data in a second S3 bucket. Perform analysis on the data that remains in the original S3 bucket.",
-      "Use S3 Object Lambda to access the data, and use Amazon Comprehend to detect and remove PII."
+      "Use an AWS Glue DataBrew job to store the PII data in a second S3 bucket. Perform analysis on the data that remains in the original S3 bucket."
     ],
     "answer": "B",
     "type": "single"
@@ -91,9 +91,9 @@
     "question": "A company uses an Amazon QuickSight dashboard to monitor usage of one of the company's applications. The company uses AWS Glue jobs to process data for the dashboard. The company stores the data in a single Amazon S3 bucket. The company adds new data every day.\nA data engineer discovers that dashboard queries are becoming slower over time. The data engineer determines that the root cause of the slowing queries is long-running AWS Glue jobs.\nWhich actions should the data engineer take to improve the performance of the AWS Glue jobs? (Choose two.)",
     "options": [
       "Partition the data that is in the S3 bucket. Organize the data by year, month, and day.",
+      "Increase the AWS Glue instance size by scaling up the worker type.",
       "Convert the AWS Glue schema to the DynamicFrame schema class.",
       "Adjust AWS Glue job scheduling frequency so the jobs run half as many times each day.",
-      "Increase the AWS Glue instance size by scaling up the worker type.",
       "Modify the IAM role that grants access to AWS glue to grant access to all S3 features."
     ],
     "answer": [

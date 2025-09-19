@@ -3,9 +3,9 @@
     "question": "A company uses AWS Glue Data Catalog to index data that is uploaded to an Amazon S3 bucket every day. The company uses a daily batch processes in an extract, transform, and load (ETL) pipeline to upload data from external sources into the S3 bucket.<br><br>The company runs a daily report on the S3 data. Some days, the company runs the report before all the daily data has been uploaded to the S3 bucket. A data engineer must be able to send a message that identifies any incomplete data to an existing Amazon Simple Notification Service (Amazon SNS) topic.<br><br>Which solution will meet this requirement with the LEAST operational overhead?",
     "options": [
       "Create data quality checks for the source datasets that the daily reports use. Create a new AWS managed Apache Airflow cluster. Run the data quality checks by using Airflow tasks that run data quality queries on the columns data type and the presence of null values. Configure Airflow Directed Acyclic Graphs (DAGs) to send an email notification that informs the data engineer about the incomplete datasets to the SNS topic.",
+      "Create data quality checks on the source datasets that the daily reports use. Create a new Amazon EMR cluster. Use Apache Spark SQL to create Apache Spark jobs in the EMR cluster that run data quality queries on the columns data type and the presence of null values. Orchestrate the ETL pipeline by using an AWS Step Functions workflow. Configure the workflow to send an email notification that informs the data engineer about the incomplete datasets to the SNS topic.",
       "Create data quality checks on the source datasets that the daily reports use. Create data quality actions by using AWS Glue workflows to confirm the completeness and consistency of the datasets. Configure the data quality actions to create an event in Amazon EventBridge if a dataset is incomplete. Configure EventBridge to send the event that informs the data engineer about the incomplete datasets to the Amazon SNS topic.",
-      "Create AWS Lambda functions that run data quality queries on the columns data type and the presence of null values. Orchestrate the ETL pipeline by using an AWS Step Functions workflow that runs the Lambda functions. Configure the Step Functions workflow to send an email notification that informs the data engineer about the incomplete datasets to the SNS topic.",
-      "Create data quality checks on the source datasets that the daily reports use. Create a new Amazon EMR cluster. Use Apache Spark SQL to create Apache Spark jobs in the EMR cluster that run data quality queries on the columns data type and the presence of null values. Orchestrate the ETL pipeline by using an AWS Step Functions workflow. Configure the workflow to send an email notification that informs the data engineer about the incomplete datasets to the SNS topic."
+      "Create AWS Lambda functions that run data quality queries on the columns data type and the presence of null values. Orchestrate the ETL pipeline by using an AWS Step Functions workflow that runs the Lambda functions. Configure the Step Functions workflow to send an email notification that informs the data engineer about the incomplete datasets to the SNS topic."
     ],
     "answer": "C",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A company stores customer data that contains personally identifiable information (PII) in an Amazon Redshift cluster. The company's marketing, claims, and analytics teams need to be able to access the customer data.<br><br>The marketing team should have access to obfuscated claim information but should have full access to customer contact information. The claims team should have access to customer information for each claim that the team processes. The analytics team should have access only to obfuscated PII data.<br><br>Which solution will enforce these data access requirements with the LEAST administrative overhead?",
     "options": [
       "Create a separate Redshift cluster for each team. Load only the required data for each team. Restrict access to clusters based on the teams.",
+      "Create views that include required fields for each of the data requirements. Grant the teams access only to the view that each team requires.",
       "Create a separate Amazon Redshift database role for each team. Define masking policies that apply for each team separately. Attach appropriate masking policies to each team role.",
-      "Move the customer data to an Amazon S3 bucket. Use AWS Lake Formation to create a data lake. Use fine-grained security capabilities to grant each team appropriate permissions to access the data.",
-      "Create views that include required fields for each of the data requirements. Grant the teams access only to the view that each team requires."
+      "Move the customer data to an Amazon S3 bucket. Use AWS Lake Formation to create a data lake. Use fine-grained security capabilities to grant each team appropriate permissions to access the data."
     ],
     "answer": "C",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "A financial company recently added more features to its mobile app. The new features required the company to create a new topic in an existing Amazon Managed Streaming for Apache Kafka (Amazon MSK) cluster.<br><br>A few days after the company added the new topic, Amazon CloudWatch raised an alarm on the RootDiskUsed metric for the MSK cluster.<br><br>How should the company address the CloudWatch alarm?",
     "options": [
       "Expand the storage of the MSK broker. Configure the MSK cluster storage to expand automatically.",
+      "Expand the storage of the Apache ZooKeeper nodes.",
       "Update the MSK broker instance to a larger instance type. Restart the MSK cluster.",
-      "Specify the Target Volume-in-GiB parameter for the existing topic.",
-      "Expand the storage of the Apache ZooKeeper nodes."
+      "Specify the Target Volume-in-GiB parameter for the existing topic."
     ],
     "answer": "A",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A data engineer needs to build an enterprise data catalog based on the company's Amazon S3 buckets and Amazon RDS databases. The data catalog must include storage format metadata for the data in the catalog.<br><br>Which solution will meet these requirements with the LEAST effort?",
     "options": [
       "Use an AWS Glue crawler to scan the S3 buckets and RDS databases and build a data catalog. Use data stewards to inspect the data and update the data catalog with the data format.",
+      "Use an AWS Glue crawler to build a data catalog. Use AWS Glue crawler classifiers to recognize the format of data and store the format in the catalog.",
       "Use Amazon Macie to build a data catalog and to identify sensitive data elements. Collect the data format information from Macie.",
-      "Use scripts to scan data elements and to assign data classifications based on the format of the data.",
-      "Use an AWS Glue crawler to build a data catalog. Use AWS Glue crawler classifiers to recognize the format of data and store the format in the catalog."
+      "Use scripts to scan data elements and to assign data classifications based on the format of the data."
     ],
     "answer": "B",
     "type": "single"
@@ -47,9 +47,9 @@
     "question": "A company analyzes data in a data lake every quarter to perform inventory assessments. A data engineer uses AWS Glue DataBrew to detect any personally identifiable formation (PII) about customers within the data. The company's privacy policy considers some custom categories of information to be PII. However, the categories are not included in standard DataBrew data quality rules.<br><br>The data engineer needs to modify the current process to scan for the custom PII categories across multiple datasets within the data lake.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "Manually review the data for custom PII categories.",
+      "Implement custom data quality rules in DataBrew. Apply the custom rules across datasets.",
       "Develop custom Python scripts to detect the custom PII categories. Call the scripts from DataBrew.",
-      "Implement regex patterns to extract PII information from fields during extract transform, and load (ETL) operations into the data lake.",
-      "Implement custom data quality rules in DataBrew. Apply the custom rules across datasets."
+      "Implement regex patterns to extract PII information from fields during extract transform, and load (ETL) operations into the data lake."
     ],
     "answer": "B",
     "type": "single"
@@ -58,9 +58,9 @@
     "question": "A company receives a data file from a partner each day in an Amazon S3 bucket. The company uses a daily AWS Glue extract, transform, and load (ETL) pipeline to clean and transform each data file. The output of the ETL pipeline is written to a CSV file named Daily.csv in a second S3 bucket.<br><br>Occasionally, the daily data file is empty or is missing values for required fields. When the file is missing data, the company can use the previous day’s CSV file.<br><br>A data engineer needs to ensure that the previous day's data file is overwritten only if the new daily file is complete and valid.<br><br>Which solution will meet these requirements with the LEAST effort?",
     "options": [
       "Invoke an AWS Lambda function to check the file for missing data and to fill in missing values in required fields.",
+      "Configure the AWS Glue ETL pipeline to use AWS Glue Data Quality rules. Develop rules in Data Quality Definition Language (DQDL) to check for missing values in required fields and empty files.",
       "Use AWS Glue Studio to change the code in the ETL pipeline to fill in any missing values in the required fields with the most common values for each field.",
-      "Run a SQL query in Amazon Athena to read the CSV file and drop missing rows. Copy the corrected CSV file to the second S3 bucket.",
-      "Configure the AWS Glue ETL pipeline to use AWS Glue Data Quality rules. Develop rules in Data Quality Definition Language (DQDL) to check for missing values in required fields and empty files."
+      "Run a SQL query in Amazon Athena to read the CSV file and drop missing rows. Copy the corrected CSV file to the second S3 bucket."
     ],
     "answer": "B",
     "type": "single"
@@ -69,9 +69,9 @@
     "question": "A marketing company uses Amazon S3 to store marketing data. The company uses versioning in some buckets. The company runs several jobs to read and load data into the buckets.<br><br>To help cost-optimize its storage, the company wants to gather information about incomplete multipart uploads and outdated versions that are present in the S3 buckets.<br><br>Which solution will meet these requirements with the LEAST operational effort?",
     "options": [
       "Use AWS CLI to gather the information.",
+      "Use Amazon S3 Inventory configurations reports to gather the information.",
       "Use the Amazon S3 Storage Lens dashboard to gather the information.",
-      "Use AWS usage reports for Amazon S3 to gather the information.",
-      "Use Amazon S3 Inventory configurations reports to gather the information."
+      "Use AWS usage reports for Amazon S3 to gather the information."
     ],
     "answer": "C",
     "type": "single"
@@ -80,9 +80,9 @@
     "question": "A gaming company uses Amazon Kinesis Data Streams to collect clickstream data. The company uses Amazon Data Firehose delivery streams to store the data in JSON format in Amazon S3. Data scientists at the company use Amazon Athena to query the most recent data to obtain business insights.<br><br>The company wants to reduce Athena costs but does not want to recreate the data pipeline.<br><br>Which solution will meet these requirements with the LEAST management effort?",
     "options": [
       "Change the Firehose output format to Apache Parquet. Provide a custom S3 object YYYYMMDD prefix expression and specify a large buffer size. For the existing data, create an AWS Glue extract, transform, and load (ETL) job. Configure the ETL job to combine small JSON files, convert the JSON files to large Parquet files, and add the YYYYMMDD prefix. Use the ALTER TABLE ADD PARTITION statement to reflect the partition on the existing Athena table.",
+      "Create an Apache Spark job that combines JSON files and converts the JSON files to Apache Parquet files. Launch an Amazon EMR ephemeral cluster every day to run the Spark job to create new Parquet files in a different S3 location. Use the ALTER TABLE SET LOCATION statement to reflect the new S3 location on the existing Athena table.",
       "Create a Kinesis data stream as a delivery destination for Firehose. Use Amazon Managed Service for Apache Flink (previously known as Amazon Kinesis Data Analytics) to run Apache Flink on the Kinesis data stream. Use Flink to aggregate the data and save the data to Amazon S3 in Apache Parquet format with a custom S3 object YYYYMMDD prefix. Use the ALTER TABLE ADD PARTITION statement to reflect the partition on the existing Athena table.",
-      "Integrate an AWS Lambda function with Firehose to convert source records to Apache Parquet and write them to Amazon S3. In parallel, run an AWS Glue extract, transform, and load (ETL) job to combine the JSON files and convert the JSON files to large Parquet files. Create a custom S3 object YYYYMMDD prefix. Use the ALTER TABLE ADD PARTITION statement to reflect the partition on the existing Athena table.",
-      "Create an Apache Spark job that combines JSON files and converts the JSON files to Apache Parquet files. Launch an Amazon EMR ephemeral cluster every day to run the Spark job to create new Parquet files in a different S3 location. Use the ALTER TABLE SET LOCATION statement to reflect the new S3 location on the existing Athena table."
+      "Integrate an AWS Lambda function with Firehose to convert source records to Apache Parquet and write them to Amazon S3. In parallel, run an AWS Glue extract, transform, and load (ETL) job to combine the JSON files and convert the JSON files to large Parquet files. Create a custom S3 object YYYYMMDD prefix. Use the ALTER TABLE ADD PARTITION statement to reflect the partition on the existing Athena table."
     ],
     "answer": "A",
     "type": "single"
@@ -91,9 +91,9 @@
     "question": "A data engineer must orchestrate a series of Amazon Athena queries that will run every day. Each query can run for more than 15 minutes.\nWhich combination of steps will meet these requirements MOST cost-effectively? (Choose two.)",
     "options": [
       "Use an AWS Lambda function and the Athena Boto3 client start_query_execution API call to invoke the Athena queries programmatically.",
+      "Create an AWS Step Functions workflow and add two states. Add the first state before the Lambda function. Configure the second state as a Wait state to periodically check whether the Athena query has finished using the Athena Boto3 get_query_execution API call. Configure the workflow to invoke the next query when the current query has finished running.",
       "Use an AWS Glue Python shell job and the Athena Boto3 client start_query_execution API call to invoke the Athena queries programmatically.",
       "Use an AWS Glue Python shell script to run a sleep timer that checks every 5 minutes to determine whether the current Athena query has finished running successfully. Configure the Python shell script to invoke the next query when the current query has finished running.",
-      "Create an AWS Step Functions workflow and add two states. Add the first state before the Lambda function. Configure the second state as a Wait state to periodically check whether the Athena query has finished using the Athena Boto3 get_query_execution API call. Configure the workflow to invoke the next query when the current query has finished running.",
       "Use Amazon Managed Workflows for Apache Airflow (Amazon MWAA) to orchestrate the Athena queries in AWS Batch."
     ],
     "answer": [

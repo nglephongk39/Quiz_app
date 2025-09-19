@@ -3,9 +3,9 @@
     "question": "A company is migrating on-premises workloads to AWS. The company wants to reduce overall operational overhead. The company also wants to explore serverless options.\nThe company's current workloads use Apache Pig, Apache Oozie, Apache Spark, Apache Hbase, and Apache Flink. The on-premises workloads process petabytes of data in seconds. The company must maintain similar or better performance after the migration to AWS.\nWhich extract, transform, and load (ETL) service will meet these requirements?",
     "options": [
       "AWS Glue",
+      "Amazon EMR",
       "AWS Lambda",
-      "Amazon Redshift",
-      "Amazon EMR"
+      "Amazon Redshift"
     ],
     "answer": "B",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A company has an Amazon Redshift data warehouse that users access by using a variety of IAM roles. More than 100 users access the data warehouse every day.<br><br>The company wants to control user access to the objects based on each user's job role, permissions, and how sensitive the data is.<br><br>Which solution will meet these requirements?",
     "options": [
       "Use the role-based access control (RBAC) feature of Amazon Redshift.",
+      "Use the row-level security (RLS) feature of Amazon Redshift.",
       "Use the column-level security (CLS) feature of Amazon Redshift.",
-      "Use dynamic data masking policies in Amazon Redshift.",
-      "Use the row-level security (RLS) feature of Amazon Redshift."
+      "Use dynamic data masking policies in Amazon Redshift."
     ],
     "answer": "A",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "A company uses Amazon DataZone as a data governance and business catalog solution. The company stores data in an Amazon S3 data lake. The company uses AWS Glue with an AWS Glue Data Catalog.<br><br>A data engineer needs to publish AWS Glue Data Quality scores to the Amazon DataZone portal.<br><br>Which solution will meet this requirement?",
     "options": [
       "Create a data quality ruleset with Data Quality Definition language (DQDL) rules that apply to a specific AWS Glue table. Schedule the ruleset to run daily. Configure the Amazon DataZone project to have an Amazon Redshift data source. Enable the data quality configuration for the data source.",
+      "Configure AWS Glue ETL jobs to use an Evaluate Data Quality transform. Define a data quality ruleset inside the jobs. Configure the Amazon DataZone project to have an AWS Glue data source. Enable the data quality configuration for the data source.",
       "Create a data quality ruleset with Data Quality Definition language (DQDL) rules that apply to a specific AWS Glue table. Schedule the ruleset to run daily. Configure the Amazon DataZone project to have an AWS Glue data source. Enable the data quality configuration for the data source.",
-      "Configure AWS Glue ETL jobs to use an Evaluate Data Quality transform. Define a data quality ruleset inside the jobs. Configure the Amazon DataZone project to have an Amazon Redshift data source. Enable the data quality configuration for the data source.",
-      "Configure AWS Glue ETL jobs to use an Evaluate Data Quality transform. Define a data quality ruleset inside the jobs. Configure the Amazon DataZone project to have an AWS Glue data source. Enable the data quality configuration for the data source."
+      "Configure AWS Glue ETL jobs to use an Evaluate Data Quality transform. Define a data quality ruleset inside the jobs. Configure the Amazon DataZone project to have an Amazon Redshift data source. Enable the data quality configuration for the data source."
     ],
     "answer": "C",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A company has a data warehouse in Amazon Redshift. To comply with security regulations, the company needs to log and store all user activities and connection activities for the data warehouse.<br><br>Which solution will meet these requirements?",
     "options": [
       "Create an Amazon S3 bucket. Enable logging for the Amazon Redshift cluster. Specify the S3 bucket in the logging configuration to store the logs.",
+      "Create an Amazon Elastic File System (Amazon EFS) file system. Enable logging for the Amazon Redshift cluster. Write logs to the EFS file system.",
       "Create an Amazon Aurora MySQL database. Enable logging for the Amazon Redshift cluster. Write the logs to a table in the Aurora MySQL database.",
-      "Create an Amazon Elastic Block Store (Amazon EBS) volume. Enable logging for the Amazon Redshift cluster. Write the logs to the EBS volume.",
-      "Create an Amazon Elastic File System (Amazon EFS) file system. Enable logging for the Amazon Redshift cluster. Write logs to the EFS file system."
+      "Create an Amazon Elastic Block Store (Amazon EBS) volume. Enable logging for the Amazon Redshift cluster. Write the logs to the EBS volume."
     ],
     "answer": "A",
     "type": "single"
@@ -47,9 +47,9 @@
     "question": "A company wants to migrate a data warehouse from Teradata to Amazon Redshift.<br><br>Which solution will meet this requirement with the LEAST operational effort?",
     "options": [
       "Use AWS Database Migration Service (AWS DMS) Schema Conversion to migrate the schema. Use AWS DMS to migrate the data.",
+      "Use the AWS Schema Conversion Tool (AWS SCT) to migrate the schema. Use AWS Database Migration Service (AWS DMS) to migrate the data.",
       "Use AWS Database Migration Service (AWS DMS) to migrate the data. Use automatic schema conversion.",
-      "Manually export the schema definition from Teradata. Apply the schema to the Amazon Redshift database. Use AWS Database Migration Service (AWS DMS) to migrate the data.",
-      "Use the AWS Schema Conversion Tool (AWS SCT) to migrate the schema. Use AWS Database Migration Service (AWS DMS) to migrate the data."
+      "Manually export the schema definition from Teradata. Apply the schema to the Amazon Redshift database. Use AWS Database Migration Service (AWS DMS) to migrate the data."
     ],
     "answer": "B",
     "type": "single"
@@ -58,9 +58,9 @@
     "question": "A company uses a variety of AWS and third-party data stores. The company wants to consolidate all the data into a central data warehouse to perform analytics. Users need fast response times for analytics queries.<br><br>The company uses Amazon QuickSight in direct query mode to visualize the data. Users normally run queries during a few hours each day with unpredictable spikes.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "Use Amazon Redshift Serverless to load all the data into Amazon Redshift managed storage (RMS).",
+      "Use Amazon Athena to load all the data into Amazon S3 in Apache Parquet format.",
       "Use Amazon Redshift provisioned clusters to load all the data into Amazon Redshift managed storage (RMS).",
-      "Use Amazon Aurora PostgreSQL to load all the data into Aurora.",
-      "Use Amazon Athena to load all the data into Amazon S3 in Apache Parquet format."
+      "Use Amazon Aurora PostgreSQL to load all the data into Aurora."
     ],
     "answer": "A",
     "type": "single"
@@ -69,9 +69,9 @@
     "question": "A data engineer uses Amazon Kinesis Data Streams to ingest and process records that contain user behavior data from an application every day.<br><br>The data engineer notices that the data stream is experiencing throttling because hot shards receive much more data than other shards in the data stream.<br><br>How should the data engineer resolve the throttling issue?",
     "options": [
       "Use a random partition key to distribute the ingested records.",
+      "Increase the number of shards in the data stream. Distribute the records across the shards.",
       "Limit the number of records that are sent each second by the producer to match the capacity of the stream.",
-      "Decrease the size of the records that the producer sends to match the capacity of the stream.",
-      "Increase the number of shards in the data stream. Distribute the records across the shards."
+      "Decrease the size of the records that the producer sends to match the capacity of the stream."
     ],
     "answer": "A",
     "type": "single"
@@ -80,9 +80,9 @@
     "question": "A company has a data processing pipeline that includes several dozen steps. The data processing pipeline needs to send alerts in real time when a step fails or succeeds. The data processing pipeline uses a combination of Amazon S3 buckets, AWS Lambda functions, and AWS Step Functions state machines.<br><br>A data engineer needs to create a solution to monitor the entire pipeline.<br><br>Which solution will meet these requirements?",
     "options": [
       "Configure the Step Functions state machines to store notifications in an Amazon S3 bucket when the state machines finish running. Enable S3 event notifications on the S3 bucket.",
+      "Configure the AWS Lambda functions to store notifications in an Amazon S3 bucket when the state machines finish running. Enable S3 event notifications on the S3 bucket.",
       "Use AWS CloudTrail to send a message to an Amazon Simple Notification Service (Amazon SNS) topic that sends notifications when a state machine fails to run or succeeds to run.",
-      "Configure an Amazon EventBridge rule to react when the execution status of a state machine changes. Configure the rule to send a message to an Amazon Simple Notification Service (Amazon SNS) topic that sends notifications.",
-      "Configure the AWS Lambda functions to store notifications in an Amazon S3 bucket when the state machines finish running. Enable S3 event notifications on the S3 bucket."
+      "Configure an Amazon EventBridge rule to react when the execution status of a state machine changes. Configure the rule to send a message to an Amazon Simple Notification Service (Amazon SNS) topic that sends notifications."
     ],
     "answer": "D",
     "type": "single"
@@ -91,9 +91,9 @@
     "question": "A company uses Amazon RDS to store transactional data. The company runs an RDS DB instance in a private subnet. A developer wrote an AWS Lambda function with default settings to insert, update, or delete data in the DB instance.\nThe developer needs to give the Lambda function the ability to connect to the DB instance privately without using the public internet.\nWhich combination of steps will meet this requirement with the LEAST operational overhead? (Choose two.)",
     "options": [
       "Turn on the public access setting for the DB instance.",
+      "Update the security group of the DB instance to allow only Lambda function invocations on the database port.",
       "Configure the Lambda function to run in the same subnet that the DB instance uses.",
       "Attach the same security group to the Lambda function and the DB instance. Include a self-referencing rule that allows access through the database port.",
-      "Update the security group of the DB instance to allow only Lambda function invocations on the database port.",
       "Update the network ACL of the private subnet to include a self-referencing rule that allows access through the database port."
     ],
     "answer": [

@@ -3,9 +3,9 @@
     "question": "A data engineer notices that Amazon Athena queries are held in a queue before the queries run.<br><br>How can the data engineer prevent the queries from queueing?",
     "options": [
       "Increase the query result limit.",
+      "Configure provisioned capacity for an existing workgroup.",
       "Use federated queries.",
-      "Allow users who run the Athena queries to an existing workgroup.",
-      "Configure provisioned capacity for an existing workgroup."
+      "Allow users who run the Athena queries to an existing workgroup."
     ],
     "answer": "B",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A data engineer needs to debug an AWS Glue job that reads from Amazon S3 and writes to Amazon Redshift. The data engineer enabled the bookmark feature for the AWS Glue job.\nThe data engineer has set the maximum concurrency for the AWS Glue job to 1.<br><br>The AWS Glue job is successfully writing the output to Amazon Redshift. However, the Amazon S3 files that were loaded during previous runs of the AWS Glue job are being reprocessed by subsequent runs.<br><br>What is the likely reason the AWS Glue job is reprocessing the files?",
     "options": [
       "The AWS Glue job does not have the s3:GetObjectAcl permission that is required for bookmarks to work correctly.",
+      "The maximum concurrency for the AWS Glue job is set to 1.",
       "The data engineer incorrectly specified an older version of AWS Glue for the Glue job.",
-      "The AWS Glue job does not have a required commit statement.",
-      "The maximum concurrency for the AWS Glue job is set to 1."
+      "The AWS Glue job does not have a required commit statement."
     ],
     "answer": "D",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "An ecommerce company wants to use AWS to migrate data pipelines from an on-premises environment into the AWS Cloud. The company currently uses a third-party tool in the on-premises environment to orchestrate data ingestion processes.<br><br>The company wants a migration solution that does not require the company to manage servers. The solution must be able to orchestrate Python and Bash scripts. The solution must not require the company to refactor any code.<br><br>Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
       "AWS Lambda",
+      "Amazon Managed Workflows for Apache Airflow (Amazon MVVAA)",
       "AWS Step Functions",
-      "AWS Glue",
-      "Amazon Managed Workflows for Apache Airflow (Amazon MVVAA)"
+      "AWS Glue"
     ],
     "answer": "B",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A data engineer needs Amazon Athena queries to finish faster. The data engineer notices that all the files the Athena queries use are currently stored in uncompressed .csv format. The data engineer also notices that users perform most queries by selecting a specific column.\nWhich solution will MOST speed up the Athena query performance?",
     "options": [
       "Change the data format from .csv to JSON format. Apply Snappy compression.",
+      "Compress the .csv files by using Snappy compression.",
       "Change the data format from .csv to Apache Parquet. Apply Snappy compression.",
-      "Compress the .csv files by using gzip compression.",
-      "Compress the .csv files by using Snappy compression."
+      "Compress the .csv files by using gzip compression."
     ],
     "answer": "C",
     "type": "single"
@@ -47,9 +47,9 @@
     "question": "A retail company stores data from a product lifecycle management (PLM) application in an on-premises MySQL database. The PLM application frequently updates the database when transactions occur.<br><br>The company wants to gather insights from the PLM application in near real time. The company wants to integrate the insights with other business datasets and to analyze the combined dataset by using an Amazon Redshift data warehouse.<br><br>The company has already established an AWS Direct Connect connection between the on-premises infrastructure and AWS.<br><br>Which solution will meet these requirements with the LEAST development effort?",
     "options": [
       "Run a scheduled AWS Glue extract, transform, and load (ETL) job to get the MySQL database updates by using a Java Database Connectivity (JDBC) connection. Set Amazon Redshift as the destination for the ETL job.",
+      "Run a full load plus CDC task in AWS Database Migration Service (AWS DMS) to continuously replicate the MySQL database changes. Set Amazon Redshift as the destination for the task.",
       "Use the Amazon AppFlow SDK to build a custom connector for the MySQL database to continuously replicate the database changes. Set Amazon Redshift as the destination for the connector.",
-      "Run scheduled AWS DataSync tasks to synchronize data from the MySQL database. Set Amazon Redshift as the destination for the tasks.",
-      "Run a full load plus CDC task in AWS Database Migration Service (AWS DMS) to continuously replicate the MySQL database changes. Set Amazon Redshift as the destination for the task."
+      "Run scheduled AWS DataSync tasks to synchronize data from the MySQL database. Set Amazon Redshift as the destination for the tasks."
     ],
     "answer": "B",
     "type": "single"
@@ -58,9 +58,9 @@
     "question": "A marketing company uses Amazon S3 to store clickstream data. The company queries the data at the end of each day by using a SQL JOIN clause on S3 objects that are stored in separate buckets.<br><br>The company creates key performance indicators (KPIs) based on the objects. The company needs a serverless solution that will give users the ability to query data by partitioning the data. The solution must maintain the atomicity, consistency, isolation, and durability (ACID) properties of the data.<br><br>Which solution will meet these requirements MOST cost-effectively?",
     "options": [
       "Amazon S3 Select",
+      "Amazon Redshift Spectrum",
       "Amazon Athena",
-      "Amazon EMR",
-      "Amazon Redshift Spectrum"
+      "Amazon EMR"
     ],
     "answer": "C",
     "type": "single"
@@ -69,9 +69,9 @@
     "question": "A company wants to migrate data from an Amazon RDS for PostgreSQL DB instance in the eu-east-1 Region of an AWS account named Account_A. The company will migrate the data to an Amazon Redshift cluster in the eu-west-1 Region of an AWS account named Account_B.<br><br>Which solution will give AWS Database Migration Service (AWS DMS) the ability to replicate data between two data stores?",
     "options": [
       "Set up an AWS DMS replication instance in Account_B in eu-west-1.",
+      "Set up an AWS DMS replication instance in Account_B in eu-east-1.",
       "Set up an AWS DMS replication instance in a new AWS account in eu-west-1.",
-      "Set up an AWS DMS replication instance in Account_A in eu-east-1.",
-      "Set up an AWS DMS replication instance in Account_B in eu-east-1."
+      "Set up an AWS DMS replication instance in Account_A in eu-east-1."
     ],
     "answer": "A",
     "type": "single"
@@ -80,9 +80,9 @@
     "question": "A company uses Amazon S3 as a data lake. The company sets up a data warehouse by using a multi-node Amazon Redshift cluster. The company organizes the data files in the data lake based on the data source of each data file.<br><br>The company loads all the data files into one table in the Redshift cluster by using a separate COPY command for each data file location. This approach takes a long time to load all the data files into the table. The company must increase the speed of the data ingestion. The company does not want to increase the cost of the process.<br><br>Which solution will meet these requirements?",
     "options": [
       "Use a provisioned Amazon EMR cluster to copy all the data files into one folder. Use a COPY command to load the data into Amazon Redshift.",
+      "Load all the data files in parallel into Amazon Aurora. Run an AWS Glue job to load the data into Amazon Redshift.",
       "Use an AWS Give job to copy all the data files into one folder. Use a COPY command to load the data into Amazon Redshift.",
-      "Create a manifest file that contains the data file locations. Use a COPY command to load the data into Amazon Redshift.",
-      "Load all the data files in parallel into Amazon Aurora. Run an AWS Glue job to load the data into Amazon Redshift."
+      "Create a manifest file that contains the data file locations. Use a COPY command to load the data into Amazon Redshift."
     ],
     "answer": "D",
     "type": "single"
@@ -91,9 +91,9 @@
     "question": "An application consumes messages from an Amazon Simple Queue Service (Amazon SQS) queue. The application experiences occasional downtime. As a result of the downtime, messages within the queue expire and are deleted after 1 day. The message deletions cause data loss for the application.<br><br>Which solutions will minimize data loss for the application? (Choose two.)",
     "options": [
       "Increase the message retention period",
+      "Increase the visibility timeout.",
       "Attach a dead-letter queue (DLQ) to the SQS queue.",
       "Use a delay queue to delay message delivery",
-      "Increase the visibility timeout.",
       "Reduce message processing time."
     ],
     "answer": [
@@ -106,9 +106,9 @@
     "question": "A company stores employee data in Amazon Resdshift. A table names Employee uses columns named Region ID, Department ID, and Role ID as a compound sort key.<br><br>Which queries will MOST increase the speed of query by using a compound sort key of the table? (Choose two.)",
     "options": [
       "Select *from Employee where Region ID=’North America’;",
+      "Select *from Employee where Region ID=’North America’ and Department ID=20;",
       "Select *from Employee where Department ID=20 and Region ID=’North America’;",
       "Select *from Employee where Role ID=50;",
-      "Select *from Employee where Region ID=’North America’ and Department ID=20;",
       "Select *from Employee where Region ID=’North America’ and Role ID=50;"
     ],
     "answer": [

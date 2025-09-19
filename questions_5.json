@@ -3,9 +3,9 @@
     "question": "A company has implemented a lake house architecture in Amazon Redshift. The company needs to give users the ability to authenticate into Redshift query editor by using a third-party identity provider (IdP).<br><br>A data engineer must set up the authentication mechanism.<br><br>What is the first step the data engineer should take to meet this requirement?",
     "options": [
       "Register the third-party IdP as an identity provider in the configuration settings of the Redshift cluster.",
+      "Register the third-party IdP as an identity provider from within Amazon Redshift.",
       "Register the third-party IdP as an identity provider for AVS Secrets Manager. Configure Amazon Redshift to use Secrets Manager to manage user credentials.",
-      "Register the third-party IdP as an identity provider for AWS Certificate Manager (ACM). Configure Amazon Redshift to use ACM to manage user credentials.",
-      "Register the third-party IdP as an identity provider from within Amazon Redshift."
+      "Register the third-party IdP as an identity provider for AWS Certificate Manager (ACM). Configure Amazon Redshift to use ACM to manage user credentials."
     ],
     "answer": "B",
     "type": "single"
@@ -14,9 +14,9 @@
     "question": "A company currently uses a provisioned Amazon EMR cluster that includes general purpose Amazon EC2 instances. The EMR cluster uses EMR managed scaling between one to five task nodes for the company’s long-running Apache Spark extract, transform, and load (ETL) job. The company runs the ETL job every day.<br><br>When the company runs the ETL job, the EMR cluster quickly scales up to five nodes. The EMR cluster often reaches maximum CPU usage, but the memory usage remains under 30%.<br><br>The company wants to modify the EMR cluster configuration to reduce the EMR costs to run the daily ETL job.<br><br>Which solution will meet these requirements MOST cost-effectively?",
     "options": [
       "Increase the maximum number of task nodes for EMR managed scaling to 10.",
+      "Change the task node type from general purpose EC2 instances to memory optimized EC2 instances.",
       "Switch the task node type from general purpose Re instances to compute optimized EC2 instances.",
-      "Reduce the scaling cooldown period for the provisioned EMR cluster.",
-      "Change the task node type from general purpose EC2 instances to memory optimized EC2 instances."
+      "Reduce the scaling cooldown period for the provisioned EMR cluster."
     ],
     "answer": "C",
     "type": "single"
@@ -25,9 +25,9 @@
     "question": "A company uploads .csv files to an Amazon S3 bucket. The company’s data platform team has set up an AWS Glue crawler to perform data discovery and to create the tables and schemas.<br><br>An AWS Glue job writes processed data from the tables to an Amazon Redshift database. The AWS Glue job handles column mapping and creates the Amazon Redshift tables in the Redshift database appropriately.<br><br>If the company reruns the AWS Glue job for any reason, duplicate records are introduced into the Amazon Redshift tables. The company needs a solution that will update the Redshift tables without duplicates.<br><br>Which solution will meet these requirements?",
     "options": [
       "Modify the AWS Glue job to copy the rows into a staging Redshift table. Add SQL commands to update the existing rows with new values from the staging Redshift table.",
+      "Modify the AWS Glue job to load the previously inserted data into a MySQL database. Perform an upsert operation in the MySQL database. Copy the results to the Amazon Redshift tables.",
       "Use Apache Spark’s DataFrame dropDuplicates() API to eliminate duplicates. Write the data to the Redshift tables.",
-      "Use the AWS Glue ResolveChoice built-in transform to select the value of the column from the most recent record.",
-      "Modify the AWS Glue job to load the previously inserted data into a MySQL database. Perform an upsert operation in the MySQL database. Copy the results to the Amazon Redshift tables."
+      "Use the AWS Glue ResolveChoice built-in transform to select the value of the column from the most recent record."
     ],
     "answer": "A",
     "type": "single"
@@ -36,9 +36,9 @@
     "question": "A company is using Amazon Redshift to build a data warehouse solution. The company is loading hundreds of files into a fact table that is in a Redshift cluster.<br><br>The company wants the data warehouse solution to achieve the greatest possible throughput. The solution must use cluster resources optimally when the company loads data into the fact table.<br><br>Which solution will meet these requirements?",
     "options": [
       "Use multiple COPY commands to load the data into the Redshift cluster.",
+      "Use S3DistCp to load multiple files into Hadoop Distributed File System (HDFS). Use an HDFS connector to ingest the data into the Redshift cluster.",
       "Use a number of INSERT statements equal to the number of Redshift cluster nodes. Load the data in parallel into each node.",
-      "Use a single COPY command to load the data into the Redshift cluster.",
-      "Use S3DistCp to load multiple files into Hadoop Distributed File System (HDFS). Use an HDFS connector to ingest the data into the Redshift cluster."
+      "Use a single COPY command to load the data into the Redshift cluster."
     ],
     "answer": "D",
     "type": "single"
@@ -47,9 +47,9 @@
     "question": "A company ingests data from multiple data sources and stores the data in an Amazon S3 bucket. An AWS Glue extract, transform, and load (ETL) job transforms the data and writes the transformed data to an Amazon S3 based data lake. The company uses Amazon Athena to query the data that is in the data lake.<br><br>The company needs to identify matching records even when the records do not have a common unique identifier.<br><br>Which solution will meet this requirement?",
     "options": [
       "Use Amazon Macie pattern matching as part of the ETL job.",
+      "Train and use the AWS Glue PySpark Filter class in the ETL job.",
       "Partition tables and use the ETL job to partition the data on a unique identifier.",
-      "Train and use the AWS Lake Formation FindMatches transform in the ETL job.",
-      "Train and use the AWS Glue PySpark Filter class in the ETL job."
+      "Train and use the AWS Lake Formation FindMatches transform in the ETL job."
     ],
     "answer": "D",
     "type": "single"
@@ -58,9 +58,9 @@
     "question": "A data engineer is using an AWS Glue crawler to catalog data that is in an Amazon S3 bucket. The S3 bucket contains both .csv and json files. The data engineer configured the crawler to exclude the .json files from the catalog.<br><br>When the data engineer runs queries in Amazon Athena, the queries also process the excluded .json files. The data engineer wants to resolve this issue. The data engineer needs a solution that will not affect access requirements for the .csv files in the source S3 bucket.<br><br>Which solution will meet this requirement with the SHORTEST query times?",
     "options": [
       "Adjust the AWS Glue crawler settings to ensure that the AWS Glue crawler also excludes .json files.",
+      "Use the Athena console to ensure the Athena queries also exclude the .json files.",
       "Relocate the .json files to a different path within the S3 bucket.",
-      "Use S3 bucket policies to block access to the .json files.",
-      "Use the Athena console to ensure the Athena queries also exclude the .json files."
+      "Use S3 bucket policies to block access to the .json files."
     ],
     "answer": "C",
     "type": "single"
@@ -69,9 +69,9 @@
     "question": "A data engineer set up an AWS Lambda function to read an object that is stored in an Amazon S3 bucket. The object is encrypted by an AWS KMS key.<br><br>The data engineer configured the Lambda function’s execution role to access the S3 bucket. However, the Lambda function encountered an error and failed to retrieve the content of the object.<br><br>What is the likely cause of the error?",
     "options": [
       "The data engineer misconfigured the permissions of the S3 bucket. The Lambda function could not access the object.",
+      "The Lambda function is using an outdated SDK version, which caused the read failure.",
       "The S3 bucket is located in a different AWS Region than the Region where the data engineer works. Latency issues caused the Lambda function to encounter an error.",
-      "The Lambda function’s execution role does not have the necessary permissions to access the KMS key that can decrypt the S3 object.",
-      "The Lambda function is using an outdated SDK version, which caused the read failure."
+      "The Lambda function’s execution role does not have the necessary permissions to access the KMS key that can decrypt the S3 object."
     ],
     "answer": "D",
     "type": "single"
@@ -80,9 +80,9 @@
     "question": "A data engineer has implemented data quality rules in 1,000 AWS Glue Data Catalog tables. Because of a recent change in business requirements, the data engineer must edit the data quality rules.<br><br>How should the data engineer meet this requirement with the LEAST operational overhead?",
     "options": [
       "Create a pipeline in AWS Glue ETL to edit the rules for each of the 1,000 Data Catalog tables. Use an AWS Lambda function to call the corresponding AWS Glue job for each Data Catalog table.",
+      "Create an AWS Lambda function that makes an API call to AWS Glue Data Quality to make the edits.",
       "Create an Amazon EMR cluster. Run a pipeline on Amazon EMR that edits the rules for each Data Catalog table. Use an AWS Lambda function to run the EMR pipeline.",
-      "Use the AWS Management Console to edit the rules within the Data Catalog.",
-      "Create an AWS Lambda function that makes an API call to AWS Glue Data Quality to make the edits."
+      "Use the AWS Management Console to edit the rules within the Data Catalog."
     ],
     "answer": "B",
     "type": "single"
@@ -91,9 +91,9 @@
     "question": "A company implements a data mesh that has a central governance account. The company needs to catalog all data in the governance account. The governance account uses AWS Lake Formation to centrally share data and grant access permissions.<br><br>The company has created a new data product that includes a group of Amazon Redshift Serverless tables. A data engineer needs to share the data product with a marketing team. The marketing team must have access to only a subset of columns. The data engineer needs to share the same data product with a compliance team. The compliance team must have access to a different subset of columns than the marketing team needs access to.<br><br>Which combination of steps should the data engineer take to meet these requirements? (Choose two.)",
     "options": [
       "Create views of the tables that need to be shared. Include only the required columns.",
+      "Create an Amazon Redshift data share that includes the tables that need to be shared.",
       "Create an Amazon Redshift managed VPC endpoint in the marketing team’s account. Grant the marketing team access to the views.",
       "Share the Amazon Redshift data share to the Lake Formation catalog in the governance account.",
-      "Create an Amazon Redshift data share that includes the tables that need to be shared.",
       "Share the Amazon Redshift data share to the Amazon Redshift Serverless workgroup in the marketing team's account."
     ],
     "answer": [
@@ -106,9 +106,9 @@
     "question": "A company has an application that uses a microservice architecture. The company hosts the application on an Amazon Elastic Kubernetes Services (Amazon EKS) cluster.<br><br>The company wants to set up a robust monitoring system for the application. The company needs to analyze the logs from the EKS cluster and the application. The company needs to correlate the cluster's logs with the application's traces to identify points of failure in the whole application request flow.<br><br>Which combination of steps will meet these requirements with the LEAST development effort? (Choose two.)",
     "options": [
       "Use FluentBit to collect logs. Use OpenTelemetry to collect traces.",
+      "Use Amazon CloudWatch to collect logs. Use Amazon Kinesis to collect traces.",
       "Use Amazon CloudWatch to collect logs. Use Amazon Managed Streaming for Apache Kafka (Amazon MSK) to collect traces.",
       "Use Amazon OpenSearch to correlate the logs and traces.",
-      "Use Amazon CloudWatch to collect logs. Use Amazon Kinesis to collect traces.",
       "Use AWS Glue to correlate the logs and traces."
     ],
     "answer": [
