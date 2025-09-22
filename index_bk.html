@@ -26,10 +26,8 @@
     .question-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 2px solid #28a745; border-radius: 4px; cursor: pointer; font-weight: bold; background: white; color: #333; }
     .question-btn.current { box-shadow: 0 0 0 3px rgba(0,123,255,0.5); }
     .question-btn.correct { background: #28a745; color: #fff; border: none; }
-    .question-btn.wrong { background: #dc3545; color: #fff; border: none; }
+    .question-btn.wrong { background: #ffc107; color: #000; border: none; }
     .question-btn.unanswered { background: #fff; border: 2px solid #28a745; color: #000; }
-    .exam-selector { margin-bottom: 20px; }
-    .exam-selector select { width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ddd; font-size: 16px; background-color: white; }
   </style>
 </head>
 <body>
@@ -38,9 +36,6 @@
       <div id="quiz"></div>
     </div>
     <div class="sidebar">
-      <div class="exam-selector">
-        <select id="examSelect" onchange="changeExam()"></select>
-      </div>
       <h3>Danh sách câu hỏi</h3>
       <div id="questionGrid" class="question-grid"></div>
     </div>
@@ -50,7 +45,7 @@
     let questions = [];
     let current = 0;
     let score = 0;
-    let userAnswers = [];
+    let userAnswers = []; // stores { selectedIndices: [], isCorrect: bool, explanation }
     let reviewMode = false;
 
     function normalizeText(s) { return String(s || '').replace(/\s+/g, ' ').trim().toLowerCase(); }
@@ -102,25 +97,21 @@
       return Array.from(new Set(result));
     }
 
-    async function loadQuestions(examFile) {
+    async function loadQuestions() {
       try {
-        const resp = await fetch(examFile);
+        const resp = await fetch('questions_2.json');
         const data = await resp.json();
         questions = data.map(q => {
           const opts = q.options || [];
           const correctIndices = parseAnswerToIndices(q.answer, opts);
           return {
             ...q,
-            question: (q.question || '').replace(/\\n/g, '\n').replace(/\/n/g, '\n'),
-            explanation: q.explanation ? q.explanation.replace(/\\n/g, '\n').replace(/\/n/g, '\n') : '',
+            question: (q.question || '').replace(/\\\\n/g, '\\n').replace(/\/n/g, '\\n'),
+            explanation: q.explanation ? q.explanation.replace(/\\\\n/g, '\\n').replace(/\/n/g, '\\n') : '',
             options: opts,
             correctIndices
           };
         });
-        current = 0;
-        score = 0;
-        userAnswers = [];
-        reviewMode = false;
         renderSidebar();
         showQuestion();
       } catch (err) {
@@ -232,19 +223,7 @@
     function restartQuiz() { current = 0; score = 0; userAnswers = []; reviewMode = false; renderSidebar(); showQuestion(); }
     function reviewAnswers() { current = 0; reviewMode = true; showQuestion(); }
 
-    function changeExam() {
-      const examSelect = document.getElementById('examSelect');
-      loadQuestions(examSelect.value);
-    }
-
-    function initExamSelector() {
-      const selector = document.getElementById('examSelect');
-      const examFiles = Array.from({length: 23}, (_, i) => `questions_${i+1}.json`);
-      selector.innerHTML = examFiles.map((file, idx) => `<option value="${file}">Bộ đề ${idx+1}</option>`).join('');
-      loadQuestions(examFiles[0]);
-    }
-
-    initExamSelector();
+    loadQuestions();
   </script>
 </body>
 </html>
